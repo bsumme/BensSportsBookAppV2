@@ -27,8 +27,18 @@ export interface EventTeamInfo {
 
 export interface MarketDefinition {
   key: string;
-  lastUpdate?: string;
+  last_update?: string;
   outcomes?: unknown[];
+}
+
+export interface BookmakerMarkets {
+  key: string;
+  title?: string;
+  markets: MarketDefinition[];
+}
+
+export interface EventMarketsPayload {
+  bookmakers: BookmakerMarkets[];
 }
 
 export interface EventMarkets {
