@@ -5,6 +5,8 @@ import { fetchEventsForSport, fetchMarketsForEvent, fetchOddsForEvent, fetchSpor
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request): Promise<NextResponse> {
+  const debugContext: Record<string, unknown> = {};
+
   try {
     const apiKey = process.env.THE_ODDS_API_KEY;
 
@@ -21,6 +23,9 @@ export async function GET(request: Request): Promise<NextResponse> {
     const hoursAhead = Number.isFinite(hoursAheadParam) && hoursAheadParam > 0 ? hoursAheadParam : 24;
     const maxMarkets = Number.isFinite(maxMarketsParam) && maxMarketsParam > 0 ? maxMarketsParam : 3;
 
+    debugContext.hoursAhead = hoursAhead;
+    debugContext.maxMarkets = maxMarkets;
+
     const sports = await fetchSports(apiKey, { useCache: false });
     const activeSports = sports.filter((sport) => sport.active);
 
@@ -29,7 +34,12 @@ export async function GET(request: Request): Promise<NextResponse> {
     }
 
     const primarySport = activeSports[0];
+    debugContext.primarySport = { key: primarySport.key, title: primarySport.title };
+    console.info(
+      `Odds API smoke test using primary sport ${primarySport.key} (${primarySport.title}) with hoursAhead=${hoursAhead} and maxMarkets=${maxMarkets}`,
+    );
     const events = await fetchEventsForSport(primarySport.key, apiKey, { hoursAhead, useCache: false });
+    debugContext.eventsChecked = events.length;
     const sampleEvent = events[0];
 
     if (!sampleEvent) {
@@ -45,8 +55,26 @@ export async function GET(request: Request): Promise<NextResponse> {
       );
     }
 
+    debugContext.sampleEvent = {
+      eventId: sampleEvent.eventId,
+      teams: sampleEvent.teams,
+      startTime: sampleEvent.startTime,
+    };
+
+    console.info(
+      `Odds API smoke test inspecting event ${sampleEvent.eventId} (${sampleEvent.teams.join(' vs ')}) commencing ${sampleEvent.startTime}`,
+    );
+
     const markets = await fetchMarketsForEvent(sampleEvent.eventId, apiKey, { useCache: false });
+    console.info(
+      `Odds API smoke test fetched ${markets.marketKeys.length} markets for event ${sampleEvent.eventId}; requesting up to ${maxMarkets} in odds snapshot`,
+    );
     const selectedMarketKeys = markets.marketKeys.slice(0, maxMarkets);
+    debugContext.marketsRequested = selectedMarketKeys;
+
+    console.info(
+      `Odds API smoke test requesting odds for event ${sampleEvent.eventId} across markets: ${selectedMarketKeys.join(', ') || 'none available'}`,
+    );
     const oddsSnapshot = await fetchOddsForEvent(sampleEvent.eventId, selectedMarketKeys, apiKey, { useCache: false });
 
     return NextResponse.json(
@@ -66,10 +94,16 @@ export async function GET(request: Request): Promise<NextResponse> {
       { status: 200 },
     );
   } catch (error) {
-    console.error('Odds API smoke test failed', error);
+    console.error('Odds API smoke test failed', {
+      error: error instanceof Error ? error.message : String(error),
+      hint: 'Check debugContext for the last successful step.',
+      debugContext,
+    });
 
     return NextResponse.json(
-      { error: 'Odds API smoke test failed. Check server logs for details.' },
+      {
+        error: 'Odds API smoke test failed. Check server logs for details.',
+      },
       { status: 500 },
     );
   }
