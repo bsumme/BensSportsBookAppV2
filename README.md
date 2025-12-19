@@ -90,6 +90,15 @@ pwsh ./generate_Market_snapshot_only.ps1 -BaseUrl "http://localhost:8000" -Hours
 The script logs the request and JSON response to `LatestSnapshotMarket.log` by default, overwriting the previous run. You
 can point `-LogPath` elsewhere if you want to archive multiple runs or compare snapshots across environments.
 
+**Update: hardened URI handling**
+
+The PowerShell helper now normalizes the base URL and snapshot path before issuing the request, preventing empty or malformed
+`GET` lines when the `-BaseUrl` value contains extra spaces or trailing slashes. Example usage:
+
+```powershell
+pwsh ./generate_Market_snapshot_only.ps1 -BaseUrl "http://localhost:8000" -HoursAhead 24 -MaxSports 2 -MaxEventsPerSport 5 -Regions "us" -Bookmakers @('draftkings','fanduel')
+```
+
 ## Catalog seed data
 
 The `schema.catalog.seed.json` file now includes the latest market keys parsed from `snapshotParsed.txt`, making it easy to

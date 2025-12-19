@@ -38,7 +38,6 @@ function Invoke-Snapshot {
         [hashtable]$Query
     )
 
-    $trimmedBase = $BaseUrl.TrimEnd('/')
     $queryPairs = @()
 
     foreach ($entry in $Query.GetEnumerator()) {
@@ -49,17 +48,21 @@ function Invoke-Snapshot {
         }
     }
 
-    $uri = "$trimmedBase$Path"
+    $normalizedPath = if ([string]::IsNullOrWhiteSpace($Path)) { '/' } else { $Path.Trim() }
+    $relativePath = $normalizedPath.TrimStart('/')
+    $resolvedUri = [Uri]::new($parsedBaseUrl, $relativePath)
 
     if ($queryPairs.Count -gt 0) {
-        $uri = "$uri?${($queryPairs -join '&')}"
+        $uriBuilder = [UriBuilder]::new($resolvedUri)
+        $uriBuilder.Query = ($queryPairs -join '&')
+        $resolvedUri = $uriBuilder.Uri
     }
 
     Add-Content -Path $LogPath -Value "===== $Name ====="
-    Add-Content -Path $LogPath -Value "GET $uri"
+    Add-Content -Path $LogPath -Value "GET $($resolvedUri.AbsoluteUri)"
 
     try {
-        $response = Invoke-RestMethod -Method Get -Uri $uri -ErrorAction Stop
+        $response = Invoke-RestMethod -Method Get -Uri $resolvedUri -ErrorAction Stop
         $responseJson = $response | ConvertTo-Json -Depth 12
         Add-Content -Path $LogPath -Value $responseJson
     } catch {
