@@ -1,0 +1,42 @@
+{
+    "regions": {
+        "<REGION_KEY>": {
+            "label": "<HUMAN_READABLE_REGION_NAME>",
+            "default": <true_or_false>,
+            "supportedBookmakers": [
+                "<BOOKMAKER_KEY>",
+                "<BOOKMAKER_KEY>"
+            ]
+        }
+    },
+    "bookmakers": {
+        "<BOOKMAKER_KEY>": {
+            "label": "<HUMAN_READABLE_BOOKMAKER_NAME>",
+            "aliases": [
+                "<ALIAS_STRING>",
+                "<ALIAS_STRING>"
+            ],
+            "regions": [
+                "<REGION_KEY>"
+            ],
+            "enabled": <true_or_false>
+        }
+    },
+    "sports": {
+        "<SPORT_KEY>": {
+            "label": "<HUMAN_READABLE_SPORT_NAME>",
+            "active": <true_or_false>
+        }
+    },
+    "markets": {
+        "<MARKET_KEY>": {
+            "label": "<HUMAN_READABLE_MARKET_NAME>",
+            "category": "<core | player_prop | futures | other>",
+            "outcomes": <NUMBER_OF_OUTCOMES>,
+            "arbSafe": <true_or_false>,
+            "requiresLine": <true_or_false>,
+            "polarity": "<home_away | over_under | yes_no | multi>",
+            "sports": "<all | ARRAY_OF_SPORT_KEYS>"
+        }
+    }
+}
