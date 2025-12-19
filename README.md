@@ -227,6 +227,20 @@ parameters to reduce scope when running against a limited quota.
    The response shows which markets appear for which bookmakers and how many events surfaced each market—ideal for filling
    gaps in your schema.
 
+### Parse and reuse captured seed data
+
+Convert the combined `All_Seed_Data.log` output into JSON that matches the catalog shape and a raw snapshot for deeper
+analysis:
+
+```bash
+# Rebuild AllSeedDataRaw.json (full log parsed) and schema.catalog.seed.json (catalog-friendly view)
+node scripts/parseAllSeedData.js
+```
+
+- `AllSeedDataRaw.json` mirrors the log with structured run metadata plus each snapshot payload.
+- `schema.catalog.seed.json` aligns the captured regions, bookmakers, sports, and discovered markets to the
+  `schema.catalog.json` shape so you can import or diff it when updating the schema.
+
 5. **Arbitrage safety checks**
 
    * Prefer the targeted snapshot and event logs for day-to-day schema work; reserve the full crawl for periodic audits.

@@ -1,0 +1,1487 @@
+{
+  "run": {
+    "startedAt": "2025-12-19T13:39:06.5315876-05:00",
+    "finishedAt": "2025-12-19T13:39:15.1993610-05:00",
+    "baseUrl": "http://localhost:8000",
+    "hoursAhead": 100,
+    "maxSports": 5,
+    "maxEventsPerSport": 15,
+    "regions": [
+      "us",
+      "us_ex"
+    ],
+    "bookmakers": [
+      "draftkings",
+      "fanduel",
+      "novig"
+    ]
+  },
+  "marketSnapshot": {
+    "capturedAt": "2025-12-19T18:39:12.512Z",
+    "logPath": "C:\\Users\\bsumm\\CodingProjects\\BensSportsBookAppV2\\BensSportsBookAppV2\\LatestSnapshotMarket.log",
+    "options": {
+      "hoursAhead": 100,
+      "maxSports": 5,
+      "maxEventsPerSport": 15,
+      "regions": "us,us_ex",
+      "bookmakers": [
+        "draftkings",
+        "fanduel",
+        "novig"
+      ],
+      "useCache": false
+    },
+    "sportsChecked": 5,
+    "eventsCaptured": 23,
+    "warnings": [
+      "No events found for sport americanfootball_ncaaf_championship_winner within the next 100 hours.",
+      "No events found for sport americanfootball_nfl_super_bowl_winner within the next 100 hours.",
+      "No events found for sport aussierules_afl within the next 100 hours."
+    ],
+    "marketsBySport": [
+      {
+        "sportKey": "americanfootball_ncaaf",
+        "sportTitle": "NCAAF",
+        "marketKeys": [
+          "alternate_spreads",
+          "alternate_spreads_h1",
+          "alternate_spreads_h2",
+          "alternate_spreads_q1",
+          "alternate_team_totals",
+          "alternate_totals",
+          "alternate_totals_h1",
+          "alternate_totals_h2",
+          "alternate_totals_q1",
+          "h2h",
+          "h2h_3_way_h1",
+          "h2h_3_way_h2",
+          "h2h_3_way_q1",
+          "h2h_3_way_q2",
+          "h2h_3_way_q3",
+          "h2h_3_way_q4",
+          "h2h_h1",
+          "h2h_h2",
+          "h2h_q1",
+          "h2h_q2",
+          "h2h_q3",
+          "h2h_q4",
+          "halftime_fulltime",
+          "last_team_to_score",
+          "odd_even",
+          "odd_even_h1",
+          "odd_even_h2",
+          "overtime",
+          "player_1st_td",
+          "player_anytime_td",
+          "player_anytime_td_h1",
+          "player_anytime_td_q1",
+          "player_pass_attempts",
+          "player_pass_completions",
+          "player_pass_interceptions",
+          "player_pass_longest_completion",
+          "player_pass_rush_yds",
+          "player_pass_tds",
+          "player_pass_tds_alternate",
+          "player_pass_yds",
+          "player_pass_yds_alternate",
+          "player_pass_yds_alternate_q1",
+          "player_pass_yds_q1",
+          "player_reception_longest",
+          "player_reception_yds",
+          "player_reception_yds_alternate",
+          "player_reception_yds_q1",
+          "player_receptions",
+          "player_receptions_alternate",
+          "player_rush_longest",
+          "player_rush_reception_yds",
+          "player_rush_yds",
+          "player_rush_yds_alternate",
+          "player_rush_yds_alternate_h1",
+          "player_rush_yds_q1",
+          "player_tds_over",
+          "spreads",
+          "spreads_h1",
+          "spreads_h2",
+          "spreads_q1",
+          "spreads_q2",
+          "spreads_q3",
+          "spreads_q4",
+          "team_total_rush_yds",
+          "team_totals",
+          "team_totals_h1",
+          "team_totals_h2",
+          "team_totals_q1",
+          "total_tds",
+          "totals",
+          "totals_h1",
+          "totals_h2",
+          "totals_q1",
+          "totals_q2",
+          "totals_q3",
+          "totals_q4"
+        ]
+      },
+      {
+        "sportKey": "americanfootball_nfl",
+        "sportTitle": "NFL",
+        "marketKeys": [
+          "alternate_spreads",
+          "alternate_spreads_h1",
+          "alternate_spreads_h2",
+          "alternate_spreads_q1",
+          "alternate_team_totals",
+          "alternate_totals",
+          "alternate_totals_h1",
+          "alternate_totals_h2",
+          "alternate_totals_q1",
+          "h2h",
+          "h2h_3_way_h1",
+          "h2h_3_way_h2",
+          "h2h_3_way_q1",
+          "h2h_3_way_q2",
+          "h2h_3_way_q3",
+          "h2h_3_way_q4",
+          "h2h_h1",
+          "h2h_h2",
+          "h2h_q1",
+          "h2h_q2",
+          "h2h_q3",
+          "h2h_q4",
+          "halftime_fulltime",
+          "last_team_to_score",
+          "longest_td_yds",
+          "odd_even",
+          "odd_even_h1",
+          "odd_even_h2",
+          "odd_even_q1",
+          "overtime",
+          "player_1st_td",
+          "player_anytime_td",
+          "player_anytime_td_h1",
+          "player_anytime_td_h2",
+          "player_anytime_td_q1",
+          "player_field_goals",
+          "player_field_goals_alternate",
+          "player_kicking_points",
+          "player_kicking_points_alternate",
+          "player_last_td",
+          "player_pass_attempts",
+          "player_pass_attempts_alternate",
+          "player_pass_completions",
+          "player_pass_completions_alternate",
+          "player_pass_interceptions",
+          "player_pass_interceptions_alternate",
+          "player_pass_longest_completion",
+          "player_pass_rush_yds",
+          "player_pass_rush_yds_alternate",
+          "player_pass_tds",
+          "player_pass_tds_alternate",
+          "player_pass_yds",
+          "player_pass_yds_alternate",
+          "player_pass_yds_alternate_q1",
+          "player_pass_yds_q1",
+          "player_pats",
+          "player_pats_alternate",
+          "player_reception_longest",
+          "player_reception_longest_alternate",
+          "player_reception_yds",
+          "player_reception_yds_alternate",
+          "player_reception_yds_alternate_q1",
+          "player_reception_yds_q1",
+          "player_receptions",
+          "player_receptions_alternate",
+          "player_rush_attempts",
+          "player_rush_attempts_alternate",
+          "player_rush_longest",
+          "player_rush_reception_yds",
+          "player_rush_reception_yds_alternate",
+          "player_rush_yds",
+          "player_rush_yds_alternate",
+          "player_rush_yds_alternate_h1",
+          "player_rush_yds_alternate_q1",
+          "player_rush_yds_h1",
+          "player_rush_yds_q1",
+          "player_sacks",
+          "player_sacks_alternate",
+          "player_tds_over",
+          "spreads",
+          "spreads_h1",
+          "spreads_h2",
+          "spreads_q1",
+          "spreads_q2",
+          "spreads_q3",
+          "spreads_q4",
+          "team_totals",
+          "team_totals_h1",
+          "team_totals_h2",
+          "team_totals_q1",
+          "total_td_yds",
+          "total_tds",
+          "total_tds_alternate",
+          "totals",
+          "totals_h1",
+          "totals_h2",
+          "totals_q1",
+          "totals_q2",
+          "totals_q3",
+          "totals_q4"
+        ]
+      }
+    ]
+  },
+  "sportNamesSnapshot": {
+    "capturedAt": "2025-12-19T18:39:12.663Z",
+    "logPath": "C:\\Users\\bsumm\\CodingProjects\\BensSportsBookAppV2\\BensSportsBookAppV2\\LatestSnapshotSportNames.log",
+    "sportsChecked": 5,
+    "sportNames": [
+      {
+        "sportKey": "americanfootball_ncaaf",
+        "sportTitle": "NCAAF",
+        "group": "American Football",
+        "description": "US College Football"
+      },
+      {
+        "sportKey": "americanfootball_ncaaf_championship_winner",
+        "sportTitle": "NCAAF Championship Winner",
+        "group": "American Football",
+        "description": "US College Football Championship Winner"
+      },
+      {
+        "sportKey": "americanfootball_nfl",
+        "sportTitle": "NFL",
+        "group": "American Football",
+        "description": "US Football"
+      },
+      {
+        "sportKey": "americanfootball_nfl_super_bowl_winner",
+        "sportTitle": "NFL Super Bowl Winner",
+        "group": "American Football",
+        "description": "Super Bowl Winner 2025/2026"
+      },
+      {
+        "sportKey": "aussierules_afl",
+        "sportTitle": "AFL",
+        "group": "Aussie Rules",
+        "description": "Aussie Football"
+      }
+    ],
+    "options": {
+      "hoursAhead": 100,
+      "maxSports": 5,
+      "maxEventsPerSport": 15,
+      "regions": "us,us_ex",
+      "bookmakers": [
+        "draftkings",
+        "fanduel",
+        "novig"
+      ],
+      "useCache": false
+    },
+    "warnings": []
+  },
+  "teamNamesSnapshot": {
+    "capturedAt": "2025-12-19T18:39:12.925Z",
+    "logPath": "C:\\Users\\bsumm\\CodingProjects\\BensSportsBookAppV2\\BensSportsBookAppV2\\LatestSnapshotTeamNames.log",
+    "sportsChecked": 5,
+    "eventsCaptured": 23,
+    "teamsBySport": [
+      {
+        "sportKey": "americanfootball_ncaaf",
+        "sportTitle": "NCAAF",
+        "teams": [
+          "Alabama Crimson Tide",
+          "James Madison Dukes",
+          "Louisville Cardinals",
+          "Memphis Tigers",
+          "Miami Hurricanes",
+          "NC State Wolfpack",
+          "Oklahoma Sooners",
+          "Ole Miss Rebels",
+          "Oregon Ducks",
+          "Southern Mississippi Golden Eagles",
+          "Texas A&M Aggies",
+          "Toledo Rockets",
+          "Tulane Green Wave",
+          "Utah State Aggies",
+          "Washington State Cougars",
+          "Western Kentucky Hilltoppers"
+        ],
+        "eventsChecked": 8
+      },
+      {
+        "sportKey": "americanfootball_nfl",
+        "sportTitle": "NFL",
+        "teams": [
+          "Arizona Cardinals",
+          "Atlanta Falcons",
+          "Baltimore Ravens",
+          "Buffalo Bills",
+          "Carolina Panthers",
+          "Chicago Bears",
+          "Cincinnati Bengals",
+          "Cleveland Browns",
+          "Dallas Cowboys",
+          "Denver Broncos",
+          "Detroit Lions",
+          "Green Bay Packers",
+          "Houston Texans",
+          "Indianapolis Colts",
+          "Jacksonville Jaguars",
+          "Kansas City Chiefs",
+          "Las Vegas Raiders",
+          "Los Angeles Chargers",
+          "Miami Dolphins",
+          "Minnesota Vikings",
+          "New England Patriots",
+          "New Orleans Saints",
+          "New York Giants",
+          "New York Jets",
+          "Philadelphia Eagles",
+          "Pittsburgh Steelers",
+          "San Francisco 49ers",
+          "Tampa Bay Buccaneers",
+          "Tennessee Titans",
+          "Washington Commanders"
+        ],
+        "eventsChecked": 15
+      }
+    ],
+    "options": {
+      "hoursAhead": 100,
+      "maxSports": 5,
+      "maxEventsPerSport": 15,
+      "regions": "us,us_ex",
+      "bookmakers": [
+        "draftkings",
+        "fanduel",
+        "novig"
+      ],
+      "useCache": false
+    },
+    "warnings": [
+      "No events found for sport americanfootball_ncaaf_championship_winner within the next 100 hours.",
+      "No events found for sport americanfootball_nfl_super_bowl_winner within the next 100 hours.",
+      "No events found for sport aussierules_afl within the next 100 hours."
+    ]
+  },
+  "playerNamesSnapshot": {
+    "capturedAt": "2025-12-19T18:39:14.453Z",
+    "logPath": "C:\\Users\\bsumm\\CodingProjects\\BensSportsBookAppV2\\BensSportsBookAppV2\\LatestSnapshotPlayerNames.log",
+    "sportsChecked": 5,
+    "eventsCaptured": 23,
+    "marketsCaptured": 3327,
+    "playerNamesBySport": [
+      {
+        "sportKey": "americanfootball_ncaaf",
+        "sportTitle": "NCAAF",
+        "playerNames": [],
+        "eventsChecked": 8,
+        "marketsChecked": 691
+      },
+      {
+        "sportKey": "americanfootball_nfl",
+        "sportTitle": "NFL",
+        "playerNames": [],
+        "eventsChecked": 15,
+        "marketsChecked": 2636
+      }
+    ],
+    "options": {
+      "hoursAhead": 100,
+      "maxSports": 5,
+      "maxEventsPerSport": 15,
+      "regions": "us,us_ex",
+      "bookmakers": [
+        "draftkings",
+        "fanduel",
+        "novig"
+      ],
+      "useCache": false
+    },
+    "warnings": [
+      "No player-like outcome names found for sport americanfootball_ncaaf.",
+      "No events found for sport americanfootball_ncaaf_championship_winner within the next 100 hours.",
+      "No player-like outcome names found for sport americanfootball_nfl.",
+      "No events found for sport americanfootball_nfl_super_bowl_winner within the next 100 hours.",
+      "No events found for sport aussierules_afl within the next 100 hours."
+    ]
+  },
+  "marketsDiscovery": {
+    "generatedAt": "2025-12-19T18:39:15.192Z",
+    "bookmakers": [
+      "draftkings",
+      "fanduel",
+      "novig"
+    ],
+    "sportsScanned": 5,
+    "eventsScanned": 14,
+    "markets": {
+      "alternate_spreads": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "alternate_team_totals": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "alternate_totals": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "h2h": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "h2h_3_way_h1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "h2h_3_way_q1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "h2h_3_way_q2": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "h2h_3_way_q3": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "h2h_3_way_q4": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "h2h_h1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "h2h_q1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "h2h_q2": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "h2h_q3": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "h2h_q4": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "player_1st_td": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "player_anytime_td": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "player_anytime_td_h1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "player_pass_rush_yds": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 12
+      },
+      "player_pass_tds": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "player_pass_tds_alternate": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "player_pass_yds": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "player_pass_yds_alternate": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "player_pass_yds_alternate_q1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "player_pass_yds_q1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "player_reception_longest": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "player_reception_yds": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "player_reception_yds_alternate": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "player_reception_yds_q1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 13
+      },
+      "player_receptions": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "player_receptions_alternate": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "player_rush_reception_yds": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 8
+      },
+      "player_rush_yds": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "player_rush_yds_alternate": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "player_rush_yds_q1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 13
+      },
+      "player_tds_over": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "spreads": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "spreads_h1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "spreads_q1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "spreads_q2": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "spreads_q3": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "spreads_q4": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "team_total_rush_yds": {
+        "sports": [
+          "americanfootball_ncaaf"
+        ],
+        "bookmakers": [
+          "fanduel"
+        ],
+        "eventCount": 5
+      },
+      "team_totals": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "team_totals_h1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "totals": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "totals_h1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 14
+      },
+      "totals_q1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "totals_q2": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "totals_q3": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "totals_q4": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "alternate_spreads_h1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "alternate_spreads_h2": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "alternate_spreads_q1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 14
+      },
+      "alternate_totals_h1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "alternate_totals_h2": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "alternate_totals_q1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 14
+      },
+      "h2h_3_way_h2": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 14
+      },
+      "h2h_h2": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "halftime_fulltime": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 14
+      },
+      "last_team_to_score": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 14
+      },
+      "odd_even": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 14
+      },
+      "odd_even_h1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 14
+      },
+      "odd_even_h2": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 14
+      },
+      "overtime": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 12
+      },
+      "player_anytime_td_q1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 14
+      },
+      "player_rush_yds_alternate_h1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 10
+      },
+      "spreads_h2": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "team_totals_h2": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "team_totals_q1": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 14
+      },
+      "total_tds": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 14
+      },
+      "totals_h2": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 14
+      },
+      "player_pass_attempts": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 12
+      },
+      "player_pass_completions": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 12
+      },
+      "player_pass_interceptions": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 11
+      },
+      "player_pass_longest_completion": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 12
+      },
+      "player_rush_longest": {
+        "sports": [
+          "americanfootball_ncaaf",
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 11
+      },
+      "longest_td_yds": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 9
+      },
+      "odd_even_q1": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 9
+      },
+      "player_anytime_td_h2": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 9
+      },
+      "player_field_goals": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "novig"
+        ],
+        "eventCount": 9
+      },
+      "player_field_goals_alternate": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 9
+      },
+      "player_kicking_points": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "novig"
+        ],
+        "eventCount": 9
+      },
+      "player_kicking_points_alternate": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 9
+      },
+      "player_last_td": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 9
+      },
+      "player_pass_attempts_alternate": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 9
+      },
+      "player_pass_completions_alternate": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 9
+      },
+      "player_pass_interceptions_alternate": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 8
+      },
+      "player_pass_rush_yds_alternate": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 8
+      },
+      "player_pats": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 9
+      },
+      "player_pats_alternate": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 9
+      },
+      "player_reception_longest_alternate": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 9
+      },
+      "player_reception_yds_alternate_q1": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 7
+      },
+      "player_rush_attempts": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel",
+          "novig"
+        ],
+        "eventCount": 9
+      },
+      "player_rush_attempts_alternate": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 8
+      },
+      "player_rush_reception_yds_alternate": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings",
+          "fanduel"
+        ],
+        "eventCount": 6
+      },
+      "player_rush_yds_alternate_q1": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 7
+      },
+      "player_rush_yds_h1": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 5
+      },
+      "total_td_yds": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 9
+      },
+      "total_tds_alternate": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "draftkings"
+        ],
+        "eventCount": 9
+      },
+      "player_sacks": {
+        "sports": [
+          "americanfootball_nfl"
+        ],
+        "bookmakers": [
+          "fanduel"
+        ],
+        "eventCount": 1
+      }
+    },
+    "warning": "This endpoint performs a full snapshot-style crawl of the Odds API for schema discovery. Use sparingly to conserve quota."
+  }
+}
