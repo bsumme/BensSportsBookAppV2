@@ -91,3 +91,27 @@ merges the core Odds API markets with any additional markets discovered for the 
 
 3. Inspect `LatestMarketsCatalog.log` for the merged list of markets. Each run overwrites the previous log so the file
    always reflects the most recent request.
+
+## Full market catalog crawl (dangerous)
+
+Enumerate every market currently exposed by FanDuel, DraftKings, and Novig across active sports. This route issues a
+sport list call, then walks upcoming events per sport, and finally fetches available markets per event. The crawl is
+**quota-expensive** and must be explicitly opted into with `dangerous=true`; it will never run automatically.
+
+Example (safe defaults limit to 1 sport and 3 events per sport):
+
+```bash
+curl "http://localhost:8000/api/market-catalog?dangerous=true"
+```
+
+Helpful query parameters:
+
+- `sports` (default `all`): comma-separated sport keys. Use this to restrict the crawl to a single sport when possible.
+- `maxSports` (default `1`): caps the number of sports included. Defaults to 1 to avoid runaway usage.
+- `maxEventsPerSport` (default `3`): limits how many upcoming events are inspected per sport.
+- `bookmakers` (default `fanduel,draftkings,novig`): bookmaker keys passed to the Odds API.
+- `regions` (default `us,us_ex`): regions forwarded to the Odds API market endpoint.
+- `dangerous` (required, must be `true`): acknowledges the quota cost and allows the crawl to run.
+
+The JSON response groups discovered markets by key and lists which sports and bookmakers expose each market along with a
+count of how many events surfaced it. Use this only for schema discovery and debugging—not for production odds polling.
