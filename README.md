@@ -75,6 +75,32 @@ Query parameters allow quick scoping when testing:
 - `regions` (default `us`): Odds API regions filter used for markets and odds.
 - `useCache` is disabled for snapshots to force fresh data.
 
+## Sport, team, and player name snapshots
+
+Capture the string identifiers needed for your data schema without pulling full odds payloads. Three lightweight routes
+mirror the market snapshot controls but focus on names only:
+
+- `/api/sport-names-snapshot`: returns active sports with their titles, groups, and description metadata.
+- `/api/team-names-snapshot`: walks upcoming events per sport and aggregates the participating team names.
+- `/api/player-names-snapshot`: inspects market outcome names (handy for player props) to seed a player/participant catalog.
+
+Each route accepts the familiar snapshot parameters:
+
+- `hoursAhead` (default `48`): event lookahead window for team/player discovery.
+- `maxSports` (default `3`) and `maxEventsPerSport` (default `10`): scope how many sports/events are scanned.
+- `regions` (default `us,us_ex`) and `bookmakers` (default `draftkings,fanduel,novig`): forwarded to the Odds API when
+  markets are involved (player lookup).
+- `useCache` (default `false`): flip to `true` if you are iterating locally and want to re-use the last Odds API
+  responses.
+
+Example calls (with `THE_ODDS_API_KEY` set and the dev server running):
+
+```bash
+curl "http://localhost:8000/api/sport-names-snapshot?maxSports=5"
+curl "http://localhost:8000/api/team-names-snapshot?hoursAhead=24&maxEventsPerSport=3"
+curl "http://localhost:8000/api/player-names-snapshot?hoursAhead=12&bookmakers=draftkings,fanduel&regions=us"
+```
+
 ## Event markets logging
 
 Create a point-in-time log of the markets available for a specific event by hitting the new route handler. The endpoint
