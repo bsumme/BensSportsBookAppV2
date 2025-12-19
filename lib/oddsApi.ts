@@ -171,11 +171,14 @@ export async function fetchMarketsForEvent(
     apiKey,
     fetchOptions,
   );
+  const bookmakerMarkets = Array.isArray(rawPayload?.bookmakers)
+    ? rawPayload.bookmakers.filter((bookmaker): bookmaker is BookmakerMarkets =>
+        Boolean(bookmaker && Array.isArray(bookmaker.markets)),
+      )
+    : undefined;
   const rawMarkets: MarketDefinition[] = Array.isArray(rawPayload)
     ? rawPayload
-    : Array.isArray(rawPayload?.bookmakers)
-      ? rawPayload.bookmakers.flatMap((bookmaker) => bookmaker?.markets ?? [])
-      : [];
+    : bookmakerMarkets?.flatMap((bookmaker) => bookmaker.markets) ?? [];
   const marketKeys = Array.from(
     new Set(
       rawMarkets
@@ -184,12 +187,17 @@ export async function fetchMarketsForEvent(
     ),
   );
 
-  console.info(`Fetched ${marketKeys.length} markets for sport ${sportKey} event ${eventId}`);
+  const bookmakerCount = bookmakerMarkets?.length ?? 0;
+
+  console.info(
+    `Fetched ${marketKeys.length} markets for sport ${sportKey} event ${eventId} (bookmakers observed: ${bookmakerCount})`,
+  );
 
   return {
     eventId,
     marketKeys,
     rawMarkets,
+    bookmakerMarkets,
   };
 }
 

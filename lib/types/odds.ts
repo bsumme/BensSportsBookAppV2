@@ -45,6 +45,7 @@ export interface EventMarkets {
   eventId: string;
   marketKeys: string[];
   rawMarkets: MarketDefinition[];
+  bookmakerMarkets?: BookmakerMarkets[];
 }
 
 export interface EventOddsSnapshot {
