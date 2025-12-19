@@ -36,7 +36,7 @@ interface FetchMarketsOptions extends FetchOptions {
 
 const cache = new Map<string, CacheEntry<unknown>>();
 
-function getOddsApiKey(explicitKey?: string): string {
+export function getOddsApiKey(explicitKey?: string): string {
   const apiKey = explicitKey ?? process.env.THE_ODDS_API_KEY;
 
   if (!apiKey) {
