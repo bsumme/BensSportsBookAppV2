@@ -168,7 +168,7 @@
       "active": true
     },
     "soccer_brazil_campeonato": {
-      "label": "Brazil Série A",
+      "label": "Brazil S\u00e9rie A",
       "active": true
     },
     "soccer_conmebol_copa_libertadores": {
@@ -180,5 +180,1482 @@
       "active": true
     }
   },
-  "markets": {}
+  "markets": {
+    "alternate_spreads": {
+      "label": "Alternate Spreads",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_spreads_h1": {
+      "label": "Alternate Spreads H1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_spreads_h2": {
+      "label": "Alternate Spreads H2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_spreads_q1": {
+      "label": "Alternate Spreads Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_spreads_q2": {
+      "label": "Alternate Spreads Q2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_spreads_q3": {
+      "label": "Alternate Spreads Q3",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_spreads_q4": {
+      "label": "Alternate Spreads Q4",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_team_totals": {
+      "label": "Alternate Team Totals",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_team_totals_h1": {
+      "label": "Alternate Team Totals H1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_team_totals_h2": {
+      "label": "Alternate Team Totals H2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_team_totals_q1": {
+      "label": "Alternate Team Totals Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_team_totals_q2": {
+      "label": "Alternate Team Totals Q2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_team_totals_q3": {
+      "label": "Alternate Team Totals Q3",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_team_totals_q4": {
+      "label": "Alternate Team Totals Q4",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_totals": {
+      "label": "Alternate Totals",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_totals_h1": {
+      "label": "Alternate Totals H1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_totals_h2": {
+      "label": "Alternate Totals H2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_totals_p1": {
+      "label": "Alternate Totals P1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_totals_q1": {
+      "label": "Alternate Totals Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_totals_q2": {
+      "label": "Alternate Totals Q2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_totals_q3": {
+      "label": "Alternate Totals Q3",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "alternate_totals_q4": {
+      "label": "Alternate Totals Q4",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "draw_no_bet": {
+      "label": "Draw No Bet",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h": {
+      "label": "H2h",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_3_way": {
+      "label": "H2h 3 Way",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_3_way_h1": {
+      "label": "H2h 3 Way H1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_3_way_h2": {
+      "label": "H2h 3 Way H2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_3_way_p1": {
+      "label": "H2h 3 Way P1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_3_way_p2": {
+      "label": "H2h 3 Way P2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_3_way_q1": {
+      "label": "H2h 3 Way Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_3_way_q2": {
+      "label": "H2h 3 Way Q2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_3_way_q3": {
+      "label": "H2h 3 Way Q3",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_3_way_q4": {
+      "label": "H2h 3 Way Q4",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_h1": {
+      "label": "H2h H1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_h2": {
+      "label": "H2h H2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_ot": {
+      "label": "H2h Ot",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_q1": {
+      "label": "H2h Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_q2": {
+      "label": "H2h Q2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_q3": {
+      "label": "H2h Q3",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "h2h_q4": {
+      "label": "H2h Q4",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "halftime_fulltime": {
+      "label": "Halftime Fulltime",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "last_team_to_score": {
+      "label": "Last Team To Score",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "longest_td_yds": {
+      "label": "Longest Td Yds",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "none": {
+      "label": "None",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "odd_even": {
+      "label": "Odd Even",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "odd_even_h1": {
+      "label": "Odd Even H1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "odd_even_h2": {
+      "label": "Odd Even H2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "odd_even_q1": {
+      "label": "Odd Even Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "odd_even_q2": {
+      "label": "Odd Even Q2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "overtime": {
+      "label": "Overtime",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_1st_td": {
+      "label": "Player 1st Td",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_anytime_td": {
+      "label": "Player Anytime Td",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_anytime_td_h1": {
+      "label": "Player Anytime Td H1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_anytime_td_h2": {
+      "label": "Player Anytime Td H2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_anytime_td_q1": {
+      "label": "Player Anytime Td Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_assists": {
+      "label": "Player Assists",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_assists_alternate": {
+      "label": "Player Assists Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_assists_alternate_q1": {
+      "label": "Player Assists Alternate Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_blocked_shots": {
+      "label": "Player Blocked Shots",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_blocked_shots_alternate": {
+      "label": "Player Blocked Shots Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_blocks": {
+      "label": "Player Blocks",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_blocks_alternate": {
+      "label": "Player Blocks Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_blocks_steals": {
+      "label": "Player Blocks Steals",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_double_double": {
+      "label": "Player Double Double",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_field_goals": {
+      "label": "Player Field Goals",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_field_goals_alternate": {
+      "label": "Player Field Goals Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_first_basket": {
+      "label": "Player First Basket",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_first_team_basket": {
+      "label": "Player First Team Basket",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_goal_scorer_anytime": {
+      "label": "Player Goal Scorer Anytime",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_goal_scorer_anytime_p1": {
+      "label": "Player Goal Scorer Anytime P1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_goal_scorer_first": {
+      "label": "Player Goal Scorer First",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_goal_scorer_last": {
+      "label": "Player Goal Scorer Last",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_goals_alternate": {
+      "label": "Player Goals Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_kicking_points": {
+      "label": "Player Kicking Points",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_kicking_points_alternate": {
+      "label": "Player Kicking Points Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_last_td": {
+      "label": "Player Last Td",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_attempts": {
+      "label": "Player Pass Attempts",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_attempts_alternate": {
+      "label": "Player Pass Attempts Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_completions": {
+      "label": "Player Pass Completions",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_completions_alternate": {
+      "label": "Player Pass Completions Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_interceptions": {
+      "label": "Player Pass Interceptions",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_interceptions_alternate": {
+      "label": "Player Pass Interceptions Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_longest_completion": {
+      "label": "Player Pass Longest Completion",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_rush_yds": {
+      "label": "Player Pass Rush Yds",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_rush_yds_alternate": {
+      "label": "Player Pass Rush Yds Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_tds": {
+      "label": "Player Pass Tds",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_tds_alternate": {
+      "label": "Player Pass Tds Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_yds": {
+      "label": "Player Pass Yds",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_yds_alternate": {
+      "label": "Player Pass Yds Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_yds_alternate_q1": {
+      "label": "Player Pass Yds Alternate Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pass_yds_q1": {
+      "label": "Player Pass Yds Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pats": {
+      "label": "Player Pats",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_pats_alternate": {
+      "label": "Player Pats Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_points": {
+      "label": "Player Points",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_points_alternate": {
+      "label": "Player Points Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_points_alternate_q1": {
+      "label": "Player Points Alternate Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_points_assists": {
+      "label": "Player Points Assists",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_points_assists_alternate": {
+      "label": "Player Points Assists Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_points_rebounds": {
+      "label": "Player Points Rebounds",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_points_rebounds_alternate": {
+      "label": "Player Points Rebounds Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_points_rebounds_assists": {
+      "label": "Player Points Rebounds Assists",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_points_rebounds_assists_alternate": {
+      "label": "Player Points Rebounds Assists Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_power_play_points": {
+      "label": "Player Power Play Points",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rebounds": {
+      "label": "Player Rebounds",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rebounds_alternate": {
+      "label": "Player Rebounds Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rebounds_alternate_q1": {
+      "label": "Player Rebounds Alternate Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rebounds_assists": {
+      "label": "Player Rebounds Assists",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_reception_longest": {
+      "label": "Player Reception Longest",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_reception_longest_alternate": {
+      "label": "Player Reception Longest Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_reception_yds": {
+      "label": "Player Reception Yds",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_reception_yds_alternate": {
+      "label": "Player Reception Yds Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_reception_yds_alternate_q1": {
+      "label": "Player Reception Yds Alternate Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_reception_yds_q1": {
+      "label": "Player Reception Yds Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_receptions": {
+      "label": "Player Receptions",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_receptions_alternate": {
+      "label": "Player Receptions Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rush_attempts": {
+      "label": "Player Rush Attempts",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rush_attempts_alternate": {
+      "label": "Player Rush Attempts Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rush_longest": {
+      "label": "Player Rush Longest",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rush_reception_yds": {
+      "label": "Player Rush Reception Yds",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rush_reception_yds_alternate": {
+      "label": "Player Rush Reception Yds Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rush_yds": {
+      "label": "Player Rush Yds",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rush_yds_alternate": {
+      "label": "Player Rush Yds Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rush_yds_alternate_h1": {
+      "label": "Player Rush Yds Alternate H1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rush_yds_alternate_q1": {
+      "label": "Player Rush Yds Alternate Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rush_yds_h1": {
+      "label": "Player Rush Yds H1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_rush_yds_q1": {
+      "label": "Player Rush Yds Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_sacks": {
+      "label": "Player Sacks",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_sacks_alternate": {
+      "label": "Player Sacks Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_shots_on_goal": {
+      "label": "Player Shots On Goal",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_shots_on_goal_alternate": {
+      "label": "Player Shots On Goal Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_steals": {
+      "label": "Player Steals",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_steals_alternate": {
+      "label": "Player Steals Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_tds_over": {
+      "label": "Player Tds Over",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_threes": {
+      "label": "Player Threes",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_threes_alternate": {
+      "label": "Player Threes Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_total_saves": {
+      "label": "Player Total Saves",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "player_triple_double": {
+      "label": "Player Triple Double",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "spreads": {
+      "label": "Spreads",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "spreads_h1": {
+      "label": "Spreads H1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "spreads_h2": {
+      "label": "Spreads H2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "spreads_p1": {
+      "label": "Spreads P1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "spreads_p2": {
+      "label": "Spreads P2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "spreads_q1": {
+      "label": "Spreads Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "spreads_q2": {
+      "label": "Spreads Q2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "spreads_q3": {
+      "label": "Spreads Q3",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "spreads_q4": {
+      "label": "Spreads Q4",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "team_totals": {
+      "label": "Team Totals",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "team_totals_h1": {
+      "label": "Team Totals H1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "team_totals_h2": {
+      "label": "Team Totals H2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "team_totals_p1": {
+      "label": "Team Totals P1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "team_totals_q1": {
+      "label": "Team Totals Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "team_totals_q2": {
+      "label": "Team Totals Q2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "total_td_yds": {
+      "label": "Total Td Yds",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "total_tds": {
+      "label": "Total Tds",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "total_tds_alternate": {
+      "label": "Total Tds Alternate",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "totals": {
+      "label": "Totals",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "totals_h1": {
+      "label": "Totals H1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "totals_h2": {
+      "label": "Totals H2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "totals_p1": {
+      "label": "Totals P1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "totals_p2": {
+      "label": "Totals P2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "totals_q1": {
+      "label": "Totals Q1",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "totals_q2": {
+      "label": "Totals Q2",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "totals_q3": {
+      "label": "Totals Q3",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    },
+    "totals_q4": {
+      "label": "Totals Q4",
+      "category": "other",
+      "outcomes": 2,
+      "arbSafe": false,
+      "requiresLine": false,
+      "polarity": "multi",
+      "sports": "all"
+    }
+  }
 }
