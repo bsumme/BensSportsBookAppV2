@@ -199,6 +199,29 @@ Use the existing routes together to incrementally build and validate your market
    curl "http://localhost:8000/api/markets-discovery?dangerous=true&sports=basketball_nba&maxSports=1&maxEventsPerSport=2&bookmakers=fanduel,draftkings&regions=us"
    ```
 
+## All-in-one seed data capture (PowerShell)
+
+Run every snapshot route plus the full markets discovery crawl in one pass and capture the combined JSON output in
+`All_Seed_Data.log`. The script defaults to aggressive parameters (wide hours ahead, very high sport/event caps, all documented
+bookmakers, and all U.S. regions) so it can be executed once and parsed for seeding.
+
+1. Ensure the dev server is running on port 8000 with `THE_ODDS_API_KEY` set.
+2. Execute the script with PowerShell (`pwsh` works cross-platform):
+
+   ```bash
+   pwsh ./generate_All_seed_data.ps1 \
+     -BaseUrl "http://localhost:8000" \
+     -HoursAhead 168 \
+     -MaxSports 1000 \
+     -MaxEventsPerSport 500 \
+     -Regions "us,us2,us_dfs,us_ex" \
+     -Bookmakers "betonlineag,betmgm,betrivers,betus,bovada,williamhill_us,draftkings,fanatics,fanduel,lowvig,mybookieag,ballybet,betanysports,betparx,espnbet,fliff,hardrockbet,rebet,betr_us_dfs,pick6,prizepicks,underdog,betopenly,kalshi,novig,prophetx" \
+     -LogPath "./All_Seed_Data.log"
+   ```
+
+The log records each request URI, the full JSON response, and any errors without overwriting your per-endpoint logs. Use the
+parameters to reduce scope when running against a limited quota.
+
    The response shows which markets appear for which bookmakers and how many events surfaced each market—ideal for filling
    gaps in your schema.
 
