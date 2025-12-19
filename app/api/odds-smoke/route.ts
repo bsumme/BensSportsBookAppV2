@@ -89,7 +89,7 @@ export async function GET(request: Request): Promise<NextResponse> {
       `Odds API smoke test inspecting event ${sampleEvent.eventId} (${normalizedTeams.join(' vs ')}) commencing ${sampleEvent.startTime}`,
     );
 
-    const markets = await fetchMarketsForEvent(sampleEvent.eventId, apiKey, { useCache: false });
+    const markets = await fetchMarketsForEvent(primarySport.key, sampleEvent.eventId, apiKey, { useCache: false });
     console.info(
       `Odds API smoke test fetched ${markets.marketKeys.length} markets for event ${sampleEvent.eventId}; requesting up to ${maxMarkets} in odds snapshot`,
     );
