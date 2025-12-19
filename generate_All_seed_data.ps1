@@ -15,6 +15,12 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
+$BaseUrl = $BaseUrl.Trim()
+$parsedBaseUrl = $null
+if (-not [Uri]::TryCreate($BaseUrl, [UriKind]::Absolute, [ref]$parsedBaseUrl) -or $parsedBaseUrl.Scheme -notin @('http', 'https')) {
+    throw "BaseUrl must include http:// or https:// and a hostname (e.g., http://localhost:8000)"
+}
+
 function ConvertTo-QueryValue {
     param([object]$Value)
 

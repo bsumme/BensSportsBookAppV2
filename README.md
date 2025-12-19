@@ -206,7 +206,9 @@ Run every snapshot route plus the full markets discovery crawl in one pass and c
 bookmakers, and all U.S. regions) so it can be executed once and parsed for seeding.
 
 1. Ensure the dev server is running on port 8000 with `THE_ODDS_API_KEY` set.
-2. Execute the script with PowerShell (`pwsh` works cross-platform):
+2. Execute the script with PowerShell (`pwsh` works cross-platform). `-BaseUrl` must be a fully qualified URL (including
+   `http://` or `https://` and a hostname). The script trims surrounding whitespace and throws a descriptive error if the
+   value is not a valid HTTP/HTTPS URI:
 
    ```bash
    pwsh ./generate_All_seed_data.ps1 \
