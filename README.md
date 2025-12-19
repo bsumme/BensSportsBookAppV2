@@ -74,3 +74,20 @@ Query parameters allow quick scoping when testing:
 - `maxEventsPerSport` (default `10`): limit of events inspected per sport.
 - `regions` (default `us`): Odds API regions filter used for markets and odds.
 - `useCache` is disabled for snapshots to force fresh data.
+
+## Market catalog logging
+
+Create a point-in-time log of the markets available for a specific event by hitting the new route handler. The endpoint
+merges the core Odds API markets with any additional markets discovered for the given event, writes them to
+`LatestMarketsCatalog.log` in the project root, and returns a JSON summary.
+
+1. Ensure `THE_ODDS_API_KEY` is set and the dev server is running.
+2. Provide a `sportKey` and `eventId` (you can grab both from a previous `/api/market-snapshot` run or the Odds API
+   dashboard) and trigger the logger:
+
+   ```bash
+   curl "http://localhost:8000/api/markets-catalog?sportKey=soccer_epl&eventId=sample-event-id&regions=us"
+   ```
+
+3. Inspect `LatestMarketsCatalog.log` for the merged list of markets. Each run overwrites the previous log so the file
+   always reflects the most recent request.
