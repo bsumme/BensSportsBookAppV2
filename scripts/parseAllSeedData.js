@@ -128,7 +128,7 @@ function buildCatalog(raw) {
 }
 
 function main() {
-  const logPath = path.resolve("All_Seed_Data.log");
+  const logPath = path.resolve(process.argv[2] ?? "All_Seed_Data.log");
   if (!fs.existsSync(logPath)) {
     throw new Error(`Cannot find ${logPath}`);
   }

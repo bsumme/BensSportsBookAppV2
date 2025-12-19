@@ -195,9 +195,27 @@ Use the existing routes together to incrementally build and validate your market
    For a complete market-to-sport-to-bookmaker map, run the discovery crawl with explicit acknowledgment. Keep the scope as
    narrow as possible (sport filter, event limits, bookmaker/region selection) to avoid quota blowups:
 
+    ```bash
+    curl "http://localhost:8000/api/markets-discovery?dangerous=true&sports=basketball_nba&maxSports=1&maxEventsPerSport=2&bookmakers=fanduel,draftkings&regions=us"
+    ```
+
+## Parse snapshot logs into schema-friendly JSON
+
+Convert a full snapshot log (for example, `All_Seed_Data3.log`) into structured JSON files for downstream schema work.
+
+1. Run the parser against your chosen log. Passing a path allows you to parse alternate log versions without renaming
+   files locally:
+
    ```bash
-   curl "http://localhost:8000/api/markets-discovery?dangerous=true&sports=basketball_nba&maxSports=1&maxEventsPerSport=2&bookmakers=fanduel,draftkings&regions=us"
+   node scripts/parseAllSeedData.js All_Seed_Data3.log
    ```
+
+2. Inspect the generated artifacts in the repo root:
+
+   - `AllSeedDataRaw.json` captures the run metadata plus the market, sport, team, and player snapshots as-is from the
+     log.
+   - `schema.catalog.seed.json` distills the snapshot into a catalog-friendly shape for seeding regions, bookmakers,
+     sports, and markets.
 
 ## All-in-one seed data capture (PowerShell)
 
