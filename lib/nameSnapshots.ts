@@ -142,7 +142,11 @@ function normalizeTeams(event: EventTeamInfo): string[] {
   return ['Home Team', 'Away Team'];
 }
 
-function extractOutcomeNames(market: MarketDefinition): string[] {
+function extractPlayerOutcomeNames(market: MarketDefinition): string[] {
+  if (!market.key?.startsWith('player_')) {
+    return [];
+  }
+
   const outcomes = market.outcomes;
 
   if (!Array.isArray(outcomes)) {
@@ -157,13 +161,15 @@ function extractOutcomeNames(market: MarketDefinition): string[] {
     }
 
     const candidate = outcome as Record<string, unknown>;
-    const fieldsToCheck = ['name', 'description', 'participant', 'label'];
+    const possibleNames = [candidate.description, candidate.participant];
 
-    fieldsToCheck.forEach((field) => {
-      const value = candidate[field];
+    possibleNames.forEach((value) => {
+      if (typeof value === 'string') {
+        const trimmed = value.trim();
 
-      if (typeof value === 'string' && value.trim().length > 0) {
-        outcomeNames.add(value.trim());
+        if (trimmed.length > 0) {
+          outcomeNames.add(trimmed);
+        }
       }
     });
   });
@@ -305,12 +311,14 @@ export async function createPlayerNamesSnapshot(
         useCache: normalizedOptions.useCache,
       });
 
-      sportMarketsChecked += markets.rawMarkets.length;
-      marketsCaptured += markets.rawMarkets.length;
+      const playerMarkets = markets.rawMarkets.filter((market) => market.key?.startsWith('player_'));
+
+      sportMarketsChecked += playerMarkets.length;
+      marketsCaptured += playerMarkets.length;
       eventsCaptured += 1;
 
-      markets.rawMarkets.forEach((market) => {
-        extractOutcomeNames(market).forEach((outcomeName) => playerNames.add(outcomeName));
+      playerMarkets.forEach((market) => {
+        extractPlayerOutcomeNames(market).forEach((outcomeName) => playerNames.add(outcomeName));
       });
     }
 
