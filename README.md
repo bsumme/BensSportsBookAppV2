@@ -35,7 +35,7 @@ The `lib/oddsApi.ts` helper centralizes all API connectivity:
 
 ## Odds API smoke test
 
-Run a quick, server-side smoke test to see the JSON we currently receive from The Odds API. With `ODDS_API_KEY` set
+Run a quick, server-side smoke test to see the JSON we currently receive from The Odds API. With `THE_ODDS_API_KEY` set
 and the dev server running, hit the new route handler:
 
 ```bash
