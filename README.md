@@ -82,7 +82,9 @@ mirror the market snapshot controls but focus on names only:
 
 - `/api/sport-names-snapshot`: returns active sports with their titles, groups, and description metadata.
 - `/api/team-names-snapshot`: walks upcoming events per sport and aggregates the participating team names.
-- `/api/player-names-snapshot`: inspects market outcome names (handy for player props) to seed a player/participant catalog.
+- `/api/player-names-snapshot`: inspects player-prop outcomes to seed a player/participant catalog. Only `player_*` markets are
+  scanned, and player names are pulled from outcome descriptions or participants (rather than the generic outcome labels such
+  as "Over"/"Under").
 
 Each route mirrors the market snapshot logging flow and writes a human-readable log to the project root:
 
@@ -105,6 +107,9 @@ Example calls (with `THE_ODDS_API_KEY` set and the dev server running):
 curl "http://localhost:8000/api/sport-names-snapshot?maxSports=5"
 curl "http://localhost:8000/api/team-names-snapshot?hoursAhead=24&maxEventsPerSport=3"
 curl "http://localhost:8000/api/player-names-snapshot?hoursAhead=12&bookmakers=draftkings,fanduel&regions=us"
+
+# Player snapshots now focus on player markets and outcome descriptions/participants
+cat LatestSnapshotPlayerNames.log
 
 # Inspect the latest logs after a run
 cat LatestSnapshotSportNames.log
