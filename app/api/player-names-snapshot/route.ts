@@ -39,7 +39,13 @@ export async function GET(request: Request): Promise<NextResponse> {
 
   try {
     const url = new URL(request.url);
-    const useCache = parseBooleanFlag(url.searchParams.get('useCache'), false);
+    const useCache = parseBooleanFlag(url.searchParams.get('useCache'), true);
+    const sports = url
+      .searchParams
+      .get('sports')
+      ?.split(',')
+      .map((sportKey) => sportKey.trim())
+      .filter((sportKey) => sportKey.length > 0);
     const options: MarketSnapshotOptions = {
       hoursAhead: parsePositiveInt(url.searchParams.get('hoursAhead'), 48),
       maxSports: parsePositiveInt(url.searchParams.get('maxSports'), 3),
@@ -52,6 +58,7 @@ export async function GET(request: Request): Promise<NextResponse> {
         .map((bookmaker) => bookmaker.trim())
         .filter((bookmaker) => bookmaker.length > 0),
       useCache,
+      sports,
     };
 
     const snapshot = await createPlayerNamesSnapshot(options, apiKey);

@@ -34,6 +34,9 @@ The `lib/oddsApi.ts` helper centralizes all API connectivity:
 - `fetchOddsForEvent` fetches raw odds JSON for a sport-scoped event, honoring requested markets and regions, and stamps it
   with the fetch time.
 
+Every Odds API call now logs remaining usage credits reported by the `x-requests-remaining` and `x-requests-used` headers, so
+quota spikes are easy to spot in the server logs.
+
 > **Note on market endpoints:** The Odds API only serves market discovery on sport-scoped routes. Calls to sport-agnostic
 > endpoints such as `/v4/events/{event_id}/markets` return 404s. Always include the sport key in the path,
 > e.g. use `/v4/sports/{sport_key}/events/{event_id}/markets` (correct) instead of `/v4/events/{event_id}/markets`
@@ -73,7 +76,7 @@ Query parameters allow quick scoping when testing:
 - `maxSports` (default `3`): maximum number of active sports to include.
 - `maxEventsPerSport` (default `10`): limit of events inspected per sport.
 - `regions` (default `us`): Odds API regions filter used for markets and odds.
-- `useCache` is disabled for snapshots to force fresh data.
+- `useCache` defaults to `true` to preserve quota; set `useCache=false` to force fresh data when validating schema changes.
 
 ## Sport, team, and player name snapshots
 
@@ -98,8 +101,9 @@ Each route accepts the familiar snapshot parameters:
 - `maxSports` (default `3`) and `maxEventsPerSport` (default `10`): scope how many sports/events are scanned.
 - `regions` (default `us,us_ex`) and `bookmakers` (default `draftkings,fanduel,novig`): forwarded to the Odds API when
   markets are involved (player lookup).
-- `useCache` (default `false`): flip to `true` if you are iterating locally and want to re-use the last Odds API
-  responses.
+- `useCache` (default `true`): flip to `false` if you are validating live payloads and need to skip cached responses.
+- `sports` (optional): comma-separated sport keys to constrain the crawl (e.g. `sports=basketball_nba`). This keeps the
+  player snapshot focused and reduces quota usage.
 
 Example calls (with `THE_ODDS_API_KEY` set and the dev server running):
 
@@ -107,6 +111,9 @@ Example calls (with `THE_ODDS_API_KEY` set and the dev server running):
 curl "http://localhost:8000/api/sport-names-snapshot?maxSports=5"
 curl "http://localhost:8000/api/team-names-snapshot?hoursAhead=24&maxEventsPerSport=3"
 curl "http://localhost:8000/api/player-names-snapshot?hoursAhead=12&bookmakers=draftkings,fanduel&regions=us"
+
+# Constrain the player-name snapshot to a single sport while iterating
+curl "http://localhost:8000/api/player-names-snapshot?hoursAhead=6&maxEventsPerSport=2&sports=basketball_nba"
 
 # Player snapshots now focus on player markets and outcome descriptions/participants
 cat LatestSnapshotPlayerNames.log
@@ -116,6 +123,18 @@ cat LatestSnapshotSportNames.log
 cat LatestSnapshotTeamNames.log
 cat LatestSnapshotPlayerNames.log
 ```
+
+### Player name snapshot smoke test (tiny run)
+
+Run a super-lightweight player snapshot directly from the command line to prove `lib/nameSnapshots.ts` works without burning
+through credits. With `THE_ODDS_API_KEY` set:
+
+```bash
+npm run test:name-snapshots -- --sport=basketball_nba --hoursAhead=6 --maxEvents=1
+```
+
+The command limits the crawl to one sport and a couple of near-term events, reuses cached responses by default, and echoes
+the captured player-like outcome names plus the log file path.
 
 ## Event markets logging
 

@@ -5,6 +5,7 @@ export interface MarketSnapshotOptions {
   regions?: string;
   bookmakers?: string[];
   useCache?: boolean;
+  sports?: string[];
 }
 
 export interface SnapshotEventEntry {

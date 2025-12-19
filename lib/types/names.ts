@@ -1,8 +1,10 @@
 import { MarketSnapshotOptions } from './snapshot';
 
-export type NameSnapshotOptions = Required<
-  Pick<MarketSnapshotOptions, 'hoursAhead' | 'maxSports' | 'maxEventsPerSport' | 'regions' | 'bookmakers' | 'useCache'>
->;
+export type NameSnapshotOptions =
+  & Required<
+      Pick<MarketSnapshotOptions, 'hoursAhead' | 'maxSports' | 'maxEventsPerSport' | 'regions' | 'bookmakers' | 'useCache'>
+    >
+  & Pick<MarketSnapshotOptions, 'sports'>;
 
 export interface SportNameEntry {
   sportKey: string;

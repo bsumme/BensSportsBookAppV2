@@ -70,6 +70,19 @@ function writeCache<T>(cacheKey: string, value: T, ttlMs: number): void {
   });
 }
 
+function logCreditUsage(headers: Headers): void {
+  const remaining = headers.get('x-requests-remaining');
+  const used = headers.get('x-requests-used');
+
+  if (remaining === null && used === null) {
+    return;
+  }
+
+  console.info(
+    `Odds API credits -> remaining: ${remaining ?? 'unknown'} | used: ${used ?? 'unknown'} (resets per API window)`,
+  );
+}
+
 function buildUrl(path: string, searchParams: URLSearchParams): string {
   const url = new URL(`${ODDS_API_BASE_URL}${path}`);
   url.search = searchParams.toString();
@@ -110,6 +123,8 @@ async function oddsApiGet<T>(
     const body = await response.text();
     throw new Error(`Odds API GET ${path} failed (${response.status}): ${body}`);
   }
+
+  logCreditUsage(response.headers);
 
   const payload = (await response.json()) as T;
 
