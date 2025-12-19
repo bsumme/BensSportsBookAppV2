@@ -24,10 +24,10 @@ interface FetchOddsOptions extends FetchOptions {
 const cache = new Map<string, CacheEntry<unknown>>();
 
 function getOddsApiKey(explicitKey?: string): string {
-  const apiKey = explicitKey ?? process.env.ODDS_API_KEY;
+  const apiKey = explicitKey ?? process.env.THE_ODDS_API_KEY;
 
   if (!apiKey) {
-    throw new Error('Missing Odds API key. Set ODDS_API_KEY or pass it explicitly.');
+    throw new Error('Missing Odds API key. Set THE_ODDS_API_KEY or pass it explicitly.');
   }
 
   return apiKey;

@@ -23,7 +23,7 @@ Visit [http://localhost:8000](http://localhost:8000) to view the homepage.
 Set your [The Odds API](https://the-odds-api.com/) key before making server-side requests:
 
 ```bash
-export ODDS_API_KEY=your_api_key_here
+export THE_ODDS_API_KEY=your_api_key_here
 ```
 
 The `lib/oddsApi.ts` helper centralizes all API connectivity:
