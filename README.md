@@ -50,3 +50,27 @@ curl "http://localhost:8000/api/odds-smoke?hoursAhead=24&maxMarkets=3"
 
 The response summarizes the first active sport returned by the API, the number of upcoming events within the specified
 window, and (when available) a sample event with the requested markets and their raw odds payload.
+
+## Market snapshot logging
+
+Generate a one-time snapshot that enumerates active sports, near-term events, available markets, and their raw odds. The
+route writes a human-readable log (`LatestSnapshotMarket.log`) in the project root and returns the structured snapshot as
+JSON.
+
+1. Ensure `THE_ODDS_API_KEY` is set (see "Odds API setup" above) and the dev server is running.
+2. Trigger the snapshot via the API route:
+
+   ```bash
+   curl "http://localhost:8000/api/market-snapshot?hoursAhead=48&maxSports=3&maxEventsPerSport=10&regions=us"
+   ```
+
+3. Inspect `LatestSnapshotMarket.log` in the repository root for a readable summary of the captured sports, events,
+   markets, and odds payloads. Each run overwrites the previous snapshot.
+
+Query parameters allow quick scoping when testing:
+
+- `hoursAhead` (default `48`): how far into the future to look for events.
+- `maxSports` (default `3`): maximum number of active sports to include.
+- `maxEventsPerSport` (default `10`): limit of events inspected per sport.
+- `regions` (default `us`): Odds API regions filter used for markets and odds.
+- `useCache` is disabled for snapshots to force fresh data.
