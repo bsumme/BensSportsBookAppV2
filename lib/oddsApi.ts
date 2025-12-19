@@ -21,6 +21,10 @@ interface FetchOddsOptions extends FetchOptions {
   markets?: string[];
 }
 
+interface FetchMarketsOptions extends FetchOptions {
+  regions?: string;
+}
+
 const cache = new Map<string, CacheEntry<unknown>>();
 
 function getOddsApiKey(explicitKey?: string): string {
@@ -146,13 +150,14 @@ export async function fetchMarketsForEvent(
   sportKey: string,
   eventId: string,
   apiKey?: string,
-  options: FetchOptions = {},
+  options: FetchMarketsOptions = {},
 ): Promise<EventMarkets> {
+  const { regions = 'us', ...fetchOptions } = options;
   const rawMarkets = await oddsApiGet<MarketDefinition[]>(
     `/sports/${sportKey}/events/${eventId}/markets`,
-    {},
+    { regions },
     apiKey,
-    options,
+    fetchOptions,
   );
   const marketKeys = rawMarkets.map((market) => market.key);
 
