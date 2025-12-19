@@ -3,6 +3,7 @@ export interface MarketSnapshotOptions {
   maxSports?: number;
   maxEventsPerSport?: number;
   regions?: string;
+  bookmakers?: string[];
   useCache?: boolean;
 }
 
@@ -20,7 +21,9 @@ export interface SnapshotEventEntry {
 export interface MarketSnapshotResult {
   capturedAt: string;
   logPath: string;
-  options: Required<Pick<MarketSnapshotOptions, 'hoursAhead' | 'maxSports' | 'maxEventsPerSport' | 'regions' | 'useCache'>>;
+  options: Required<
+    Pick<MarketSnapshotOptions, 'hoursAhead' | 'maxSports' | 'maxEventsPerSport' | 'regions' | 'bookmakers' | 'useCache'>
+  >;
   sportsChecked: number;
   eventsCaptured: number;
   entries: SnapshotEventEntry[];

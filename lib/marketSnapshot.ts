@@ -2,6 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 
 import { fetchEventsForSport, fetchMarketsForEvent, fetchOddsForEvent, fetchSports, getOddsApiKey } from './oddsApi';
+import { DEFAULT_SNAPSHOT_BOOKMAKERS, DEFAULT_SNAPSHOT_REGIONS } from './data/bookmakers';
 import { MarketSnapshotOptions, MarketSnapshotResult, SnapshotEventEntry } from './types/snapshot';
 import { EventTeamInfo } from './types/odds';
 
@@ -33,7 +34,7 @@ function formatSnapshotLog(snapshot: MarketSnapshotResult): string {
   const lines: string[] = [];
   lines.push(`Market snapshot captured at ${snapshot.capturedAt}`);
   lines.push(
-    `Options -> hoursAhead=${snapshot.options.hoursAhead}, maxSports=${snapshot.options.maxSports}, maxEventsPerSport=${snapshot.options.maxEventsPerSport}, regions=${snapshot.options.regions}, useCache=${snapshot.options.useCache}`,
+    `Options -> hoursAhead=${snapshot.options.hoursAhead}, maxSports=${snapshot.options.maxSports}, maxEventsPerSport=${snapshot.options.maxEventsPerSport}, regions=${snapshot.options.regions}, bookmakers=${snapshot.options.bookmakers.join(',')}, useCache=${snapshot.options.useCache}`,
   );
   lines.push(`Sports checked: ${snapshot.sportsChecked}`);
   lines.push(`Events captured: ${snapshot.eventsCaptured}`);
@@ -68,10 +69,13 @@ function normalizeOptions(options: MarketSnapshotOptions = {}): Required<MarketS
   const maxSports = Number.isFinite(options.maxSports) && (options.maxSports ?? 0) > 0 ? options.maxSports! : 3;
   const maxEventsPerSport =
     Number.isFinite(options.maxEventsPerSport) && (options.maxEventsPerSport ?? 0) > 0 ? options.maxEventsPerSport! : 10;
-  const regions = options.regions?.trim() || 'us';
+  const regions = options.regions?.trim() || DEFAULT_SNAPSHOT_REGIONS.join(',');
+  const bookmakers =
+    options.bookmakers?.map((bookmaker) => bookmaker.trim()).filter((bookmaker) => bookmaker.length > 0) ||
+    [...DEFAULT_SNAPSHOT_BOOKMAKERS];
   const useCache = options.useCache ?? false;
 
-  return { hoursAhead, maxSports, maxEventsPerSport, regions, useCache };
+  return { hoursAhead, maxSports, maxEventsPerSport, regions, bookmakers, useCache };
 }
 
 export async function createMarketSnapshot(
@@ -80,7 +84,7 @@ export async function createMarketSnapshot(
 ): Promise<MarketSnapshotResult> {
   const resolvedApiKey = getOddsApiKey(explicitApiKey);
   const normalizedOptions = normalizeOptions(options);
-  const { hoursAhead, maxSports, maxEventsPerSport, regions, useCache } = normalizedOptions;
+  const { hoursAhead, maxSports, maxEventsPerSport, regions, bookmakers, useCache } = normalizedOptions;
 
   const sports = await fetchSports(resolvedApiKey, { useCache });
   const activeSports = sports.filter((sport) => sport.active).slice(0, maxSports);
@@ -102,11 +106,18 @@ export async function createMarketSnapshot(
     }
 
     for (const event of selectedEvents) {
-      const markets = await fetchMarketsForEvent(sport.key, event.eventId, resolvedApiKey, { regions, useCache });
-      const oddsSnapshot = await fetchOddsForEvent(sport.key, event.eventId, markets.marketKeys, resolvedApiKey, {
-        regions,
-        useCache,
-      });
+      const markets = await fetchMarketsForEvent(sport.key, event.eventId, resolvedApiKey, { regions, bookmakers, useCache });
+      const oddsSnapshot = await fetchOddsForEvent(
+        sport.key,
+        event.eventId,
+        markets.marketKeys,
+        resolvedApiKey,
+        {
+          regions,
+          bookmakers,
+          useCache,
+        },
+      );
 
       entries.push({
         sportKey: sport.key,
