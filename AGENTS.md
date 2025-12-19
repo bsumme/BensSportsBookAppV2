@@ -10,6 +10,8 @@ The agent should help design, implement, review, and iterate on the app while re
 
 ## Core Principles
 
+Whenever making a change add an entry to the Readme quickly summarizing and then showing usage examples
+
 ### 1. Correctness First
 
 * Prefer clear, deterministic logic over clever shortcuts
