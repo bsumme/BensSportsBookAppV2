@@ -6,11 +6,11 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request): Promise<NextResponse> {
   try {
-    const apiKey = process.env.ODDS_API_KEY;
+    const apiKey = process.env.THE_ODDS_API_KEY;
 
     if (!apiKey) {
       return NextResponse.json(
-        { error: 'Missing Odds API key. Set ODDS_API_KEY in your environment before running the smoke test.' },
+        { error: 'Missing Odds API key. Set THE_ODDS_API_KEY in your environment before running the smoke test.' },
         { status: 400 },
       );
     }
