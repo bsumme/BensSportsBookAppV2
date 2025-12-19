@@ -78,6 +78,18 @@ Query parameters allow quick scoping when testing:
 - `regions` (default `us`): Odds API regions filter used for markets and odds.
 - `useCache` defaults to `true` to preserve quota; set `useCache=false` to force fresh data when validating schema changes.
 
+### Quick PowerShell helper (market snapshot only)
+
+If you only need the full market snapshot (which already contains sports, markets, teams, and player names) without the
+additional name-only calls, use the streamlined PowerShell helper from the repository root:
+
+```powershell
+pwsh ./generate_Market_snapshot_only.ps1 -BaseUrl "http://localhost:8000" -HoursAhead 48 -MaxSports 3 -MaxEventsPerSport 10 -Regions "us" -Bookmakers @('draftkings','fanduel','novig')
+```
+
+The script logs the request and JSON response to `LatestSnapshotMarket.log` by default, overwriting the previous run. You
+can point `-LogPath` elsewhere if you want to archive multiple runs or compare snapshots across environments.
+
 ## Catalog seed data
 
 The `schema.catalog.seed.json` file now includes the latest market keys parsed from `snapshotParsed.txt`, making it easy to
