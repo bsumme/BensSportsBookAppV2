@@ -28,10 +28,12 @@ interface FetchEventsOptions extends FetchOptions {
 interface FetchOddsOptions extends FetchOptions {
   markets?: string[];
   regions?: string;
+  bookmakers?: string[];
 }
 
 interface FetchMarketsOptions extends FetchOptions {
   regions?: string;
+  bookmakers?: string[];
 }
 
 const cache = new Map<string, CacheEntry<unknown>>();
@@ -161,10 +163,11 @@ export async function fetchMarketsForEvent(
   apiKey?: string,
   options: FetchMarketsOptions = {},
 ): Promise<EventMarkets> {
-  const { regions = 'us', ...fetchOptions } = options;
+  const { regions = 'us', bookmakers, ...fetchOptions } = options;
+  const bookmakerParam = bookmakers?.filter((key) => key.trim().length > 0).join(',') || undefined;
   const rawPayload = await oddsApiGet<MarketDefinition[] | EventMarketsPayload>(
     `/sports/${sportKey}/events/${eventId}/markets`,
-    { regions },
+    { regions, bookmakers: bookmakerParam },
     apiKey,
     fetchOptions,
   );
@@ -197,11 +200,12 @@ export async function fetchOddsForEvent(
   apiKey?: string,
   options: FetchOddsOptions = {},
 ): Promise<EventOddsSnapshot> {
-  const { markets = marketKeys, regions = 'us', ...fetchOptions } = options;
+  const { markets = marketKeys, regions = 'us', bookmakers, ...fetchOptions } = options;
   const marketParam = markets.length > 0 ? markets.join(',') : undefined;
+  const bookmakerParam = bookmakers?.filter((key) => key.trim().length > 0).join(',') || undefined;
   const rawOdds = await oddsApiGet<unknown>(
     `/sports/${sportKey}/events/${eventId}/odds`,
-    { markets: marketParam, regions },
+    { markets: marketParam, regions, bookmakers: bookmakerParam },
     apiKey,
     { ...fetchOptions, useCache: fetchOptions.useCache ?? false },
   );

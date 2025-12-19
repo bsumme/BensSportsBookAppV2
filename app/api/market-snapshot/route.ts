@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 
 import { createMarketSnapshot } from '@/lib/marketSnapshot';
 import { MarketSnapshotOptions } from '@/lib/types/snapshot';
+import { DEFAULT_SNAPSHOT_REGIONS } from '@/lib/data/bookmakers';
 
 export const dynamic = 'force-dynamic';
 
@@ -22,11 +23,18 @@ export async function GET(request: Request): Promise<NextResponse> {
 
   try {
     const url = new URL(request.url);
+    const bookmakers = url
+      .searchParams
+      .get('bookmakers')
+      ?.split(',')
+      .map((bookmaker) => bookmaker.trim())
+      .filter((bookmaker) => bookmaker.length > 0);
     const options: MarketSnapshotOptions = {
       hoursAhead: parsePositiveInt(url.searchParams.get('hoursAhead'), 48),
       maxSports: parsePositiveInt(url.searchParams.get('maxSports'), 3),
       maxEventsPerSport: parsePositiveInt(url.searchParams.get('maxEventsPerSport'), 10),
-      regions: url.searchParams.get('regions') ?? 'us',
+      regions: url.searchParams.get('regions') ?? DEFAULT_SNAPSHOT_REGIONS.join(','),
+      bookmakers,
       useCache: false,
     };
 
