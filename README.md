@@ -35,13 +35,12 @@ The `lib/oddsApi.ts` helper centralizes all API connectivity:
 
 ## Odds API smoke test
 
-Run a quick, server-side smoke test to see the JSON we currently receive from The Odds API. With the dev server
-running, ensure `THE_ODDS_API_KEY` is exported and hit the new route handler:
+Run a quick, server-side smoke test to see the JSON we currently receive from The Odds API. With `ODDS_API_KEY` set
+and the dev server running, hit the new route handler:
 
 ```bash
 curl "http://localhost:8000/api/odds-smoke?hoursAhead=24&maxMarkets=3"
 ```
 
 The response summarizes the first active sport returned by the API, the number of upcoming events within the specified
-window, and (when available) a sample event with the requested markets and their raw odds payload. If the upstream API
-returns an error, the response includes the server-side error message for easier troubleshooting.
+window, and (when available) a sample event with the requested markets and their raw odds payload.
