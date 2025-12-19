@@ -3,7 +3,7 @@ import path from 'path';
 
 import { fetchEventsForSport, fetchMarketsForEvent, fetchOddsForEvent, fetchSports, getOddsApiKey } from './oddsApi';
 import { DEFAULT_SNAPSHOT_BOOKMAKERS, DEFAULT_SNAPSHOT_REGIONS } from './data/bookmakers';
-import { MarketSnapshotOptions, MarketSnapshotResult, SnapshotEventEntry } from './types/snapshot';
+import { MarketSnapshotOptions, MarketSnapshotResult, SnapshotEventEntry, SportMarketSummary } from './types/snapshot';
 import { EventTeamInfo } from './types/odds';
 
 const SNAPSHOT_LOG_FILENAME = 'LatestSnapshotMarket.log';
@@ -46,6 +46,16 @@ function formatSnapshotLog(snapshot: MarketSnapshotResult): string {
     });
   }
 
+  if (snapshot.marketsBySport.length > 0) {
+    lines.push('');
+    lines.push('Markets by sport:');
+    snapshot.marketsBySport.forEach((marketSummary) => {
+      const heading = `  - ${marketSummary.sportKey}${marketSummary.sportTitle ? ` (${marketSummary.sportTitle})` : ''}`;
+      lines.push(heading);
+      lines.push(`    Markets (${marketSummary.marketKeys.length}): ${marketSummary.marketKeys.join(', ') || 'none'}`);
+    });
+  }
+
   snapshot.entries.forEach((entry, entryIndex) => {
     lines.push('');
     lines.push(`Entry ${entryIndex + 1}: Sport ${entry.sportKey}${entry.sportTitle ? ` (${entry.sportTitle})` : ''}`);
@@ -62,6 +72,25 @@ function formatSnapshotLog(snapshot: MarketSnapshotResult): string {
   });
 
   return lines.join('\n');
+}
+
+function buildMarketsBySport(entries: SnapshotEventEntry[]): SportMarketSummary[] {
+  const marketsBySport = new Map<string, { title?: string; markets: Set<string> }>();
+
+  for (const entry of entries) {
+    const summary = marketsBySport.get(entry.sportKey) ?? { title: entry.sportTitle, markets: new Set<string>() };
+
+    entry.marketKeys.forEach((marketKey) => summary.markets.add(marketKey));
+    marketsBySport.set(entry.sportKey, summary);
+  }
+
+  return Array.from(marketsBySport.entries())
+    .map(([sportKey, summary]) => ({
+      sportKey,
+      sportTitle: summary.title,
+      marketKeys: Array.from(summary.markets).sort(),
+    }))
+    .sort((a, b) => a.sportKey.localeCompare(b.sportKey));
 }
 
 function normalizeOptions(options: MarketSnapshotOptions = {}): Required<MarketSnapshotOptions> {
@@ -138,6 +167,7 @@ export async function createMarketSnapshot(
     sportsChecked: activeSports.length,
     eventsCaptured: entries.length,
     entries,
+    marketsBySport: buildMarketsBySport(entries),
     warnings,
     logPath: path.join(process.cwd(), SNAPSHOT_LOG_FILENAME),
   };

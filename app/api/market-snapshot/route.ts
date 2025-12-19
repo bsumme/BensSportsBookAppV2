@@ -40,7 +40,18 @@ export async function GET(request: Request): Promise<NextResponse> {
 
     const snapshot = await createMarketSnapshot(options, apiKey);
 
-    return NextResponse.json(snapshot, { status: 200 });
+    return NextResponse.json(
+      {
+        capturedAt: snapshot.capturedAt,
+        logPath: snapshot.logPath,
+        options: snapshot.options,
+        sportsChecked: snapshot.sportsChecked,
+        eventsCaptured: snapshot.eventsCaptured,
+        warnings: snapshot.warnings,
+        marketsBySport: snapshot.marketsBySport,
+      },
+      { status: 200 },
+    );
   } catch (error) {
     console.error('Market snapshot generation failed', {
       error: error instanceof Error ? error.message : String(error),

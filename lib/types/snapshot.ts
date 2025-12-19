@@ -18,6 +18,12 @@ export interface SnapshotEventEntry {
   odds: unknown;
 }
 
+export interface SportMarketSummary {
+  sportKey: string;
+  sportTitle?: string;
+  marketKeys: string[];
+}
+
 export interface MarketSnapshotResult {
   capturedAt: string;
   logPath: string;
@@ -27,5 +33,6 @@ export interface MarketSnapshotResult {
   sportsChecked: number;
   eventsCaptured: number;
   entries: SnapshotEventEntry[];
+  marketsBySport: SportMarketSummary[];
   warnings: string[];
 }
