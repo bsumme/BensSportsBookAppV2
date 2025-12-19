@@ -143,14 +143,20 @@ export async function fetchEventsForSport(
 }
 
 export async function fetchMarketsForEvent(
+  sportKey: string,
   eventId: string,
   apiKey?: string,
   options: FetchOptions = {},
 ): Promise<EventMarkets> {
-  const rawMarkets = await oddsApiGet<MarketDefinition[]>(`/events/${eventId}/markets`, {}, apiKey, options);
+  const rawMarkets = await oddsApiGet<MarketDefinition[]>(
+    `/sports/${sportKey}/events/${eventId}/markets`,
+    {},
+    apiKey,
+    options,
+  );
   const marketKeys = rawMarkets.map((market) => market.key);
 
-  console.info(`Fetched ${marketKeys.length} markets for event ${eventId}`);
+  console.info(`Fetched ${marketKeys.length} markets for sport ${sportKey} event ${eventId}`);
 
   return {
     eventId,
