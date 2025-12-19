@@ -1,3 +1,6 @@
+import fs from 'fs/promises';
+import path from 'path';
+
 import { DEFAULT_SNAPSHOT_BOOKMAKERS, DEFAULT_SNAPSHOT_REGIONS } from './data/bookmakers';
 import { fetchEventsForSport, fetchMarketsForEvent, fetchSports, getOddsApiKey } from './oddsApi';
 import { MarketSnapshotOptions } from './types/snapshot';
@@ -8,6 +11,100 @@ import {
   SportNamesSnapshotResult,
   TeamNamesSnapshotResult,
 } from './types/names';
+
+const SPORT_NAMES_SNAPSHOT_LOG_FILENAME = 'LatestSnapshotSportNames.log';
+const TEAM_NAMES_SNAPSHOT_LOG_FILENAME = 'LatestSnapshotTeamNames.log';
+const PLAYER_NAMES_SNAPSHOT_LOG_FILENAME = 'LatestSnapshotPlayerNames.log';
+
+function formatWarnings(warnings: string[]): string[] {
+  if (warnings.length === 0) {
+    return [];
+  }
+
+  const lines: string[] = ['Warnings:'];
+
+  warnings.forEach((warning, index) => {
+    lines.push(`  ${index + 1}. ${warning}`);
+  });
+
+  return lines;
+}
+
+function formatOptions(options: NameSnapshotOptions): string {
+  return `Options -> hoursAhead=${options.hoursAhead}, maxSports=${options.maxSports}, maxEventsPerSport=${options.maxEventsPerSport}, regions=${options.regions}, bookmakers=${options.bookmakers.join(',')}, useCache=${options.useCache}`;
+}
+
+function formatSportNamesSnapshotLog(snapshot: SportNamesSnapshotResult): string {
+  const lines: string[] = [];
+  lines.push(`Sport names snapshot captured at ${snapshot.capturedAt}`);
+  lines.push(formatOptions(snapshot.options));
+  lines.push(`Sports checked: ${snapshot.sportsChecked}`);
+  lines.push(...formatWarnings(snapshot.warnings));
+
+  if (snapshot.sportNames.length > 0) {
+    lines.push('');
+    lines.push('Sport names:');
+
+    snapshot.sportNames.forEach((sport) => {
+      lines.push(`- ${sport.sportKey}${sport.sportTitle ? ` (${sport.sportTitle})` : ''}`);
+      lines.push(`  Group: ${sport.group}`);
+
+      if (sport.description) {
+        lines.push(`  Description: ${sport.description}`);
+      }
+
+      lines.push(`  Has outrights: ${sport.hasOutrights ?? false}`);
+    });
+  }
+
+  return lines.join('\n');
+}
+
+function formatTeamNamesSnapshotLog(snapshot: TeamNamesSnapshotResult): string {
+  const lines: string[] = [];
+  lines.push(`Team names snapshot captured at ${snapshot.capturedAt}`);
+  lines.push(formatOptions(snapshot.options));
+  lines.push(`Sports checked: ${snapshot.sportsChecked}`);
+  lines.push(`Events captured: ${snapshot.eventsCaptured}`);
+  lines.push(...formatWarnings(snapshot.warnings));
+
+  if (snapshot.teamsBySport.length > 0) {
+    lines.push('');
+    lines.push('Teams by sport:');
+
+    snapshot.teamsBySport.forEach((entry) => {
+      lines.push(`- ${entry.sportKey}${entry.sportTitle ? ` (${entry.sportTitle})` : ''}`);
+      lines.push(`  Events checked: ${entry.eventsChecked}`);
+      lines.push(`  Teams (${entry.teams.length}): ${entry.teams.join(', ') || 'none'}`);
+    });
+  }
+
+  return lines.join('\n');
+}
+
+function formatPlayerNamesSnapshotLog(snapshot: PlayerNamesSnapshotResult): string {
+  const lines: string[] = [];
+  lines.push(`Player names snapshot captured at ${snapshot.capturedAt}`);
+  lines.push(formatOptions(snapshot.options));
+  lines.push(`Sports checked: ${snapshot.sportsChecked}`);
+  lines.push(`Events captured: ${snapshot.eventsCaptured}`);
+  lines.push(`Markets captured: ${snapshot.marketsCaptured}`);
+  lines.push(...formatWarnings(snapshot.warnings));
+
+  if (snapshot.playerNamesBySport.length > 0) {
+    lines.push('');
+    lines.push('Player-like outcome names by sport:');
+
+    snapshot.playerNamesBySport.forEach((entry) => {
+      lines.push(`- ${entry.sportKey}${entry.sportTitle ? ` (${entry.sportTitle})` : ''}`);
+      lines.push(`  Events checked: ${entry.eventsChecked}`);
+      lines.push(`  Markets checked: ${entry.marketsChecked}`);
+      lines.push(`  Outcome names (${entry.playerNames.length}): ${entry.playerNames.join(', ') || 'none'}`);
+    });
+  }
+
+  return lines.join('\n');
+}
 
 function normalizeOptions(options: MarketSnapshotOptions = {}): NameSnapshotOptions {
   const hoursAhead = Number.isFinite(options.hoursAhead) && (options.hoursAhead ?? 0) > 0 ? options.hoursAhead! : 48;
@@ -88,8 +185,9 @@ export async function createSportNamesSnapshot(
     warnings.push('No active sports available from Odds API.');
   }
 
-  return {
+  const snapshot: SportNamesSnapshotResult = {
     capturedAt: new Date().toISOString(),
+    logPath: path.join(process.cwd(), SPORT_NAMES_SNAPSHOT_LOG_FILENAME),
     options: normalizedOptions,
     sportsChecked: activeSports.length,
     sportNames: activeSports.map((sport) => ({
@@ -101,6 +199,11 @@ export async function createSportNamesSnapshot(
     })),
     warnings,
   };
+
+  await fs.writeFile(snapshot.logPath, formatSportNamesSnapshotLog(snapshot), 'utf-8');
+  console.info(`Sport names snapshot captured with ${snapshot.sportNames.length} sports. Log written to ${snapshot.logPath}.`);
+
+  return snapshot;
 }
 
 export async function createTeamNamesSnapshot(
@@ -147,14 +250,20 @@ export async function createTeamNamesSnapshot(
     });
   }
 
-  return {
+  const snapshot: TeamNamesSnapshotResult = {
     capturedAt: new Date().toISOString(),
+    logPath: path.join(process.cwd(), TEAM_NAMES_SNAPSHOT_LOG_FILENAME),
     options: normalizedOptions,
     sportsChecked: activeSports.length,
     eventsCaptured,
     teamsBySport,
     warnings,
   };
+
+  await fs.writeFile(snapshot.logPath, formatTeamNamesSnapshotLog(snapshot), 'utf-8');
+  console.info(`Team names snapshot captured with ${eventsCaptured} events. Log written to ${snapshot.logPath}.`);
+
+  return snapshot;
 }
 
 export async function createPlayerNamesSnapshot(
@@ -218,8 +327,9 @@ export async function createPlayerNamesSnapshot(
     });
   }
 
-  return {
+  const snapshot: PlayerNamesSnapshotResult = {
     capturedAt: new Date().toISOString(),
+    logPath: path.join(process.cwd(), PLAYER_NAMES_SNAPSHOT_LOG_FILENAME),
     options: normalizedOptions,
     sportsChecked: activeSports.length,
     eventsCaptured,
@@ -227,4 +337,17 @@ export async function createPlayerNamesSnapshot(
     playerNamesBySport,
     warnings,
   };
+
+  await fs.writeFile(snapshot.logPath, formatPlayerNamesSnapshotLog(snapshot), 'utf-8');
+  console.info(
+    `Player names snapshot captured with ${eventsCaptured} events and ${marketsCaptured} markets. Log written to ${snapshot.logPath}.`,
+  );
+
+  return snapshot;
 }
+
+export {
+  PLAYER_NAMES_SNAPSHOT_LOG_FILENAME,
+  SPORT_NAMES_SNAPSHOT_LOG_FILENAME,
+  TEAM_NAMES_SNAPSHOT_LOG_FILENAME,
+};

@@ -14,6 +14,7 @@ export interface SportNameEntry {
 
 export interface SportNamesSnapshotResult {
   capturedAt: string;
+  logPath: string;
   options: NameSnapshotOptions;
   sportsChecked: number;
   sportNames: SportNameEntry[];
@@ -29,6 +30,7 @@ export interface TeamNameSummary {
 
 export interface TeamNamesSnapshotResult {
   capturedAt: string;
+  logPath: string;
   options: NameSnapshotOptions;
   sportsChecked: number;
   eventsCaptured: number;
@@ -46,6 +48,7 @@ export interface PlayerNameSummary {
 
 export interface PlayerNamesSnapshotResult {
   capturedAt: string;
+  logPath: string;
   options: NameSnapshotOptions;
   sportsChecked: number;
   eventsCaptured: number;

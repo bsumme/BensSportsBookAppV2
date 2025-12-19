@@ -59,6 +59,7 @@ export async function GET(request: Request): Promise<NextResponse> {
     return NextResponse.json(
       {
         capturedAt: snapshot.capturedAt,
+        logPath: snapshot.logPath,
         sportsChecked: snapshot.sportsChecked,
         eventsCaptured: snapshot.eventsCaptured,
         teamsBySport: snapshot.teamsBySport,
