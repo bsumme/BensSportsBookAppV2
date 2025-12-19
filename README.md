@@ -78,6 +78,17 @@ Query parameters allow quick scoping when testing:
 - `regions` (default `us`): Odds API regions filter used for markets and odds.
 - `useCache` defaults to `true` to preserve quota; set `useCache=false` to force fresh data when validating schema changes.
 
+## Catalog seed data
+
+The `schema.catalog.seed.json` file now includes the latest market keys parsed from `snapshotParsed.txt`, making it easy to
+bootstrap a full catalog without hitting the Odds API.
+
+Example: load the seed catalog and print a few market labels for quick validation.
+
+```bash
+node -e "const seed = require('./schema.catalog.seed.json'); console.log(Object.keys(seed.markets).slice(0, 5).map((key) => `${key}: ${seed.markets[key].label}`));"
+```
+
 ### Parsing `LatestSnapshotMarket.log`
 
 Use the parsing helper to quickly extract the sports, teams, players, and markets captured in the most recent market snapshot log.
