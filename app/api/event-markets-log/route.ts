@@ -27,7 +27,7 @@ export async function GET(request: Request): Promise<NextResponse> {
 
   if (!sportKey || !eventId) {
     return NextResponse.json(
-      { error: 'Both sportKey and eventId are required to generate a market catalog log.' },
+      { error: 'Both sportKey and eventId are required to generate an event markets log.' },
       { status: 400 },
     );
   }
@@ -57,7 +57,7 @@ export async function GET(request: Request): Promise<NextResponse> {
       { status: 200 },
     );
   } catch (error) {
-    console.error('Failed to generate market catalog log', {
+    console.error('Failed to generate event markets log', {
       error: error instanceof Error ? error.message : String(error),
       sportKey,
       eventId,
@@ -67,7 +67,7 @@ export async function GET(request: Request): Promise<NextResponse> {
     });
 
     return NextResponse.json(
-      { error: 'Failed to generate market catalog log. Check server logs for details.' },
+      { error: 'Failed to generate event markets log. Check server logs for details.' },
       { status: 500 },
     );
   }

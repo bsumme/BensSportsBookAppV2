@@ -75,7 +75,7 @@ Query parameters allow quick scoping when testing:
 - `regions` (default `us`): Odds API regions filter used for markets and odds.
 - `useCache` is disabled for snapshots to force fresh data.
 
-## Market catalog logging
+## Event markets logging
 
 Create a point-in-time log of the markets available for a specific event by hitting the new route handler. The endpoint
 merges the core Odds API markets with any additional markets discovered for the given event, writes them to
@@ -86,13 +86,13 @@ merges the core Odds API markets with any additional markets discovered for the 
    dashboard) and trigger the logger:
 
    ```bash
-   curl "http://localhost:8000/api/markets-catalog?sportKey=soccer_epl&eventId=sample-event-id&regions=us"
+   curl "http://localhost:8000/api/event-markets-log?sportKey=soccer_epl&eventId=sample-event-id&regions=us"
    ```
 
 3. Inspect `LatestMarketsCatalog.log` for the merged list of markets. Each run overwrites the previous log so the file
    always reflects the most recent request.
 
-## Full market catalog crawl (dangerous)
+## Markets discovery crawl (dangerous)
 
 Enumerate every market currently exposed by FanDuel, DraftKings, and Novig across active sports. This route issues a
 sport list call, then walks upcoming events per sport, and finally fetches available markets per event. The crawl is
@@ -101,7 +101,7 @@ sport list call, then walks upcoming events per sport, and finally fetches avail
 Example (safe defaults limit to 1 sport and 3 events per sport):
 
 ```bash
-curl "http://localhost:8000/api/market-catalog?dangerous=true"
+curl "http://localhost:8000/api/markets-discovery?dangerous=true"
 ```
 
 Helpful query parameters:
