@@ -2,12 +2,17 @@ import { NextResponse } from 'next/server';
 
 import { fetchEventsForSport, fetchMarketsForEvent, fetchOddsForEvent, fetchSports } from '@/lib/oddsApi';
 
+// Explicitly mark this route as dynamic so Next.js does not attempt to cache the response.
 export const dynamic = 'force-dynamic';
 
+// Run a simple end-to-end call chain against The Odds API to confirm connectivity and payload shapes.
+// The endpoint fetches a sport, grabs a sample event, and then requests odds for a handful of markets.
 export async function GET(request: Request): Promise<NextResponse> {
+  // Keep track of the last successful step so errors can be debugged quickly in server logs.
   const debugContext: Record<string, unknown> = {};
 
   try {
+    // Fail fast if the API key is not configured to avoid wasted requests.
     const apiKey = process.env.THE_ODDS_API_KEY;
 
     if (!apiKey) {
@@ -17,6 +22,8 @@ export async function GET(request: Request): Promise<NextResponse> {
       );
     }
 
+    // Allow callers to control how far into the future to look and how many markets to request,
+    // but provide safe defaults so the smoke test works out of the box.
     const url = new URL(request.url);
     const hoursAheadParam = Number.parseInt(url.searchParams.get('hoursAhead') ?? '24', 10);
     const maxMarketsParam = Number.parseInt(url.searchParams.get('maxMarkets') ?? '3', 10);
@@ -26,6 +33,7 @@ export async function GET(request: Request): Promise<NextResponse> {
     debugContext.hoursAhead = hoursAhead;
     debugContext.maxMarkets = maxMarkets;
 
+    // Pull the list of sports to find something active we can test against.
     const sports = await fetchSports(apiKey, { useCache: false });
     const activeSports = sports.filter((sport) => sport.active);
 
@@ -33,11 +41,14 @@ export async function GET(request: Request): Promise<NextResponse> {
       return NextResponse.json({ error: 'No active sports returned by Odds API.' }, { status: 404 });
     }
 
+    // Use the first active sport as a deterministic choice for the smoke test.
     const primarySport = activeSports[0];
     debugContext.primarySport = { key: primarySport.key, title: primarySport.title };
     console.info(
       `Odds API smoke test using primary sport ${primarySport.key} (${primarySport.title}) with hoursAhead=${hoursAhead} and maxMarkets=${maxMarkets}`,
     );
+
+    // Fetch events occurring soon for the chosen sport so we can drill into one example.
     const events = await fetchEventsForSport(primarySport.key, apiKey, { hoursAhead, useCache: false });
     debugContext.eventsChecked = events.length;
     const sampleEvent = events[0];
@@ -55,6 +66,7 @@ export async function GET(request: Request): Promise<NextResponse> {
       );
     }
 
+    // The Odds API can surface team names in multiple fields; normalize to a reliable pair for logging and responses.
     const teamsFromPayload = sampleEvent.teams?.filter((team) => typeof team === 'string' && team.trim().length > 0);
     const teamsFromHomeAway = [sampleEvent.homeTeam, sampleEvent.awayTeam]
       .map((team) => team?.trim())
@@ -89,6 +101,7 @@ export async function GET(request: Request): Promise<NextResponse> {
       `Odds API smoke test inspecting event ${sampleEvent.eventId} (${normalizedTeams.join(' vs ')}) commencing ${sampleEvent.startTime}`,
     );
 
+    // Request the list of markets to know which ones we can request odds for.
     const markets = await fetchMarketsForEvent(primarySport.key, sampleEvent.eventId, apiKey, { useCache: false });
     console.info(
       `Odds API smoke test fetched ${markets.marketKeys.length} markets for event ${sampleEvent.eventId}; requesting up to ${maxMarkets} in odds snapshot`,
@@ -99,6 +112,7 @@ export async function GET(request: Request): Promise<NextResponse> {
     console.info(
       `Odds API smoke test requesting odds for event ${sampleEvent.eventId} across markets: ${selectedMarketKeys.join(', ') || 'none available'}`,
     );
+    // Pull a small odds snapshot to confirm the API returns data for the event and markets.
     const oddsSnapshot = await fetchOddsForEvent(primarySport.key, sampleEvent.eventId, selectedMarketKeys, apiKey, {
       useCache: false,
       regions: 'us',
