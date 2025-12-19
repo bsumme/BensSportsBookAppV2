@@ -132,6 +132,8 @@ export async function fetchEventsForSport(
     eventId: event.id,
     sportKey: event.sport_key,
     teams: event.teams,
+    homeTeam: event.home_team,
+    awayTeam: event.away_team,
     startTime: event.commence_time,
   }));
 
