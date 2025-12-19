@@ -78,6 +78,34 @@ Query parameters allow quick scoping when testing:
 - `regions` (default `us`): Odds API regions filter used for markets and odds.
 - `useCache` defaults to `true` to preserve quota; set `useCache=false` to force fresh data when validating schema changes.
 
+### Parsing `LatestSnapshotMarket.log`
+
+Use the parsing helper to quickly extract the sports, teams, players, and markets captured in the most recent market snapshot log.
+
+```
+node scripts/parseLatestSnapshotMarket.js LatestSnapshotMarket.log
+```
+
+Example output shows the counts followed by a JSON payload you can feed into other tools:
+
+```
+Parsed /workspace/BensSportsBookAppV2/LatestSnapshotMarket.log
+- Sports (3)
+- Teams (12)
+- Players (6)
+- Markets (8)
+
+JSON summary:
+{
+  "sports": [
+    { "sportKey": "baseball_mlb", "sportTitle": "MLB" }
+  ],
+  "teams": ["New York Yankees", "Boston Red Sox"],
+  "players": ["Juan Soto"],
+  "markets": ["h2h", "spreads", "totals"]
+}
+```
+
 ## Sport, team, and player name snapshots
 
 Capture the string identifiers needed for your data schema without pulling full odds payloads. Three lightweight routes
