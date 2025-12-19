@@ -1,4 +1,12 @@
-import { ApiEvent, EventMarkets, EventOddsSnapshot, EventTeamInfo, MarketDefinition, Sport } from './types/odds';
+import {
+  ApiEvent,
+  EventMarkets,
+  EventMarketsPayload,
+  EventOddsSnapshot,
+  EventTeamInfo,
+  MarketDefinition,
+  Sport,
+} from './types/odds';
 
 const ODDS_API_BASE_URL = 'https://api.the-odds-api.com/v4';
 const DEFAULT_CACHE_TTL_MS = 10 * 60 * 1000;
@@ -153,13 +161,24 @@ export async function fetchMarketsForEvent(
   options: FetchMarketsOptions = {},
 ): Promise<EventMarkets> {
   const { regions = 'us', ...fetchOptions } = options;
-  const rawMarkets = await oddsApiGet<MarketDefinition[]>(
+  const rawPayload = await oddsApiGet<MarketDefinition[] | EventMarketsPayload>(
     `/sports/${sportKey}/events/${eventId}/markets`,
     { regions },
     apiKey,
     fetchOptions,
   );
-  const marketKeys = rawMarkets.map((market) => market.key);
+  const rawMarkets: MarketDefinition[] = Array.isArray(rawPayload)
+    ? rawPayload
+    : Array.isArray(rawPayload?.bookmakers)
+      ? rawPayload.bookmakers.flatMap((bookmaker) => bookmaker?.markets ?? [])
+      : [];
+  const marketKeys = Array.from(
+    new Set(
+      rawMarkets
+        .map((market) => market.key)
+        .filter((key): key is string => typeof key === 'string' && key.trim().length > 0),
+    ),
+  );
 
   console.info(`Fetched ${marketKeys.length} markets for sport ${sportKey} event ${eventId}`);
 
