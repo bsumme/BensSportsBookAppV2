@@ -89,6 +89,16 @@ Example: load the seed catalog and print a few market labels for quick validatio
 node -e "const seed = require('./schema.catalog.seed.json'); console.log(Object.keys(seed.markets).slice(0, 5).map((key) => `${key}: ${seed.markets[key].label}`));"
 ```
 
+Player names are also baked into the seed, deduped from outcome descriptions (e.g., `Tyrese Maxey` under `player_points`).
+
+```bash
+# Count captured player-like outcome names and confirm a specific entry exists
+node -e "const seed = require('./schema.catalog.seed.json'); console.log(`Players captured: ${seed.players.length}`); console.log('Contains Tyrese Maxey?', seed.players.includes('Tyrese Maxey'));"
+
+# Spot-check the first few names to align UI dropdowns or autocomplete lists
+node -e "const seed = require('./schema.catalog.seed.json'); console.log(seed.players.slice(0, 10));"
+```
+
 ### Parsing `LatestSnapshotMarket.log`
 
 Use the parsing helper to quickly extract the sports, teams, players, and markets captured in the most recent market snapshot log.
