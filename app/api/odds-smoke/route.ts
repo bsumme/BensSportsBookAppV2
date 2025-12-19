@@ -99,7 +99,10 @@ export async function GET(request: Request): Promise<NextResponse> {
     console.info(
       `Odds API smoke test requesting odds for event ${sampleEvent.eventId} across markets: ${selectedMarketKeys.join(', ') || 'none available'}`,
     );
-    const oddsSnapshot = await fetchOddsForEvent(sampleEvent.eventId, selectedMarketKeys, apiKey, { useCache: false });
+    const oddsSnapshot = await fetchOddsForEvent(primarySport.key, sampleEvent.eventId, selectedMarketKeys, apiKey, {
+      useCache: false,
+      regions: 'us',
+    });
 
     return NextResponse.json(
       {

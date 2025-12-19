@@ -27,6 +27,7 @@ interface FetchEventsOptions extends FetchOptions {
 
 interface FetchOddsOptions extends FetchOptions {
   markets?: string[];
+  regions?: string;
 }
 
 interface FetchMarketsOptions extends FetchOptions {
@@ -190,23 +191,26 @@ export async function fetchMarketsForEvent(
 }
 
 export async function fetchOddsForEvent(
+  sportKey: string,
   eventId: string,
   marketKeys: string[] = [],
   apiKey?: string,
   options: FetchOddsOptions = {},
 ): Promise<EventOddsSnapshot> {
-  const { markets = marketKeys, ...fetchOptions } = options;
+  const { markets = marketKeys, regions = 'us', ...fetchOptions } = options;
   const marketParam = markets.length > 0 ? markets.join(',') : undefined;
   const rawOdds = await oddsApiGet<unknown>(
-    `/events/${eventId}/odds`,
-    { markets: marketParam },
+    `/sports/${sportKey}/events/${eventId}/odds`,
+    { markets: marketParam, regions },
     apiKey,
     { ...fetchOptions, useCache: fetchOptions.useCache ?? false },
   );
 
   const fetchedAt = new Date().toISOString();
 
-  console.info(`Fetched odds for event ${eventId} covering markets: ${markets.join(', ') || 'all available'}`);
+  console.info(
+    `Fetched odds for sport ${sportKey} event ${eventId} covering markets: ${markets.join(', ') || 'all available'}`,
+  );
 
   return {
     eventId,

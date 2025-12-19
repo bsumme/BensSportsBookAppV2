@@ -31,7 +31,8 @@ The `lib/oddsApi.ts` helper centralizes all API connectivity:
 - `fetchSports` retrieves and caches available sports, logging the total count.
 - `fetchEventsForSport` returns upcoming events (default next 48 hours) with `eventId`, `teams`, and `startTime`.
 - `fetchMarketsForEvent` lists available markets per event and requires the sport key to scope the request.
-- `fetchOddsForEvent` fetches raw odds JSON for specific markets and stamps it with the fetch time.
+- `fetchOddsForEvent` fetches raw odds JSON for a sport-scoped event, honoring requested markets and regions, and stamps it
+  with the fetch time.
 
 > **Note on market endpoints:** The Odds API only serves market discovery on sport-scoped routes. Calls to sport-agnostic
 > endpoints such as `/v4/events/{event_id}/markets` return 404s. Always include the sport key in the path,
