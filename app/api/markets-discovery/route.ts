@@ -33,7 +33,7 @@ export async function GET(request: Request): Promise<NextResponse> {
     return NextResponse.json(
       {
         error:
-          'The market catalog crawl is intentionally disabled by default. Pass dangerous=true to acknowledge the API quota cost.',
+          'The markets discovery crawl is intentionally disabled by default. Pass dangerous=true to acknowledge the API quota cost.',
       },
       { status: 400 },
     );
@@ -67,7 +67,7 @@ export async function GET(request: Request): Promise<NextResponse> {
   const regions = url.searchParams.get('regions') ?? DEFAULT_REGIONS;
 
   console.warn(
-    '[market-catalog] Dangerous full catalog crawl requested. This call is quota-expensive and should only run on-demand.',
+    '[markets-discovery] Dangerous full catalog crawl requested. This call is quota-expensive and should only run on-demand.',
     {
       sportsParam,
       maxSports,
@@ -93,7 +93,7 @@ export async function GET(request: Request): Promise<NextResponse> {
     }
 
     console.info(
-      `[market-catalog] Scanning ${scopedSports.length} sports (requested=${requestedSports.length}, active=${activeSports.length})`,
+      `[markets-discovery] Scanning ${scopedSports.length} sports (requested=${requestedSports.length}, active=${activeSports.length})`,
     );
 
     const catalog = new Map<string, MarketAggregate>();
@@ -105,7 +105,7 @@ export async function GET(request: Request): Promise<NextResponse> {
       const scopedEvents = sortedEvents.slice(0, maxEventsPerSport);
 
       console.info(
-        `[market-catalog] Scanning ${scopedEvents.length} upcoming events for sport ${sport.key} (requested=${events.length})`,
+        `[markets-discovery] Scanning ${scopedEvents.length} upcoming events for sport ${sport.key} (requested=${events.length})`,
       );
 
       for (const event of scopedEvents) {
@@ -174,12 +174,12 @@ export async function GET(request: Request): Promise<NextResponse> {
     };
 
     console.info(
-      `[market-catalog] Completed crawl: sports=${responseBody.sportsScanned}, events=${responseBody.eventsScanned}, markets=${Object.keys(markets).length}`,
+      `[markets-discovery] Completed crawl: sports=${responseBody.sportsScanned}, events=${responseBody.eventsScanned}, markets=${Object.keys(markets).length}`,
     );
 
     return NextResponse.json(responseBody, { status: 200 });
   } catch (error) {
-    console.error('[market-catalog] Catalog crawl failed', {
+    console.error('[markets-discovery] Catalog crawl failed', {
       error: error instanceof Error ? error.message : String(error),
       sportsParam,
       maxSports,
