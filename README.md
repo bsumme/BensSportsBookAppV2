@@ -115,3 +115,60 @@ Helpful query parameters:
 
 The JSON response groups discovered markets by key and lists which sports and bookmakers expose each market along with a
 count of how many events surfaced it. Use this only for schema discovery and debugging—not for production odds polling.
+
+## Schema-building playbook (markets, bookmakers, regions, arbitrage safety)
+
+Use the existing routes together to incrementally build and validate your market schema while keeping API usage predictable:
+
+1. **Smoke test connectivity before every schema run**
+
+   Verify your Odds API key and event/market payloads are still healthy. This helps catch upstream outages before expensive
+   crawls:
+
+   ```bash
+   curl "http://localhost:8000/api/odds-smoke?hoursAhead=24&maxMarkets=3"
+   ```
+
+   The response shows the chosen sport, a sample event, and the markets requested for odds, proving the pipeline works.
+
+2. **Capture a sport-scoped snapshot with bookmaker and region filters**
+
+   Establish a baseline catalog that ties markets to specific bookmakers and regions while keeping quota under control. The
+   snapshot writes `LatestSnapshotMarket.log` for auditing:
+
+   ```bash
+   curl "http://localhost:8000/api/market-snapshot?hoursAhead=24&maxSports=2&maxEventsPerSport=5&regions=us,us_ex&bookmakers=fanduel,draftkings"
+   ```
+
+   Use the response (and log) to seed your schema with the market keys actually exposed per bookmaker/region combination.
+
+3. **Drill into individual events to reconcile additional markets**
+
+   When you see mismatches or missing markets, pull a focused log for a specific event. This merges core and additional
+   markets and records the merged catalog in `LatestMarketsCatalog.log`:
+
+   ```bash
+   curl "http://localhost:8000/api/event-markets-log?sportKey=soccer_epl&eventId=example-event-id&regions=us&bookmakers=novig"
+   ```
+
+   Compare the additional markets against your schema and update per-bookmaker coverage as needed.
+
+4. **Run the dangerous full crawl only when you need exhaustive coverage**
+
+   For a complete market-to-sport-to-bookmaker map, run the discovery crawl with explicit acknowledgment. Keep the scope as
+   narrow as possible (sport filter, event limits, bookmaker/region selection) to avoid quota blowups:
+
+   ```bash
+   curl "http://localhost:8000/api/markets-discovery?dangerous=true&sports=basketball_nba&maxSports=1&maxEventsPerSport=2&bookmakers=fanduel,draftkings&regions=us"
+   ```
+
+   The response shows which markets appear for which bookmakers and how many events surfaced each market—ideal for filling
+   gaps in your schema.
+
+5. **Arbitrage safety checks**
+
+   * Prefer the targeted snapshot and event logs for day-to-day schema work; reserve the full crawl for periodic audits.
+   * Scope regions and bookmakers tightly when exploring new markets to avoid over-attributing coverage.
+   * Keep `hoursAhead`, `maxSports`, and `maxEventsPerSport` small unless you are deliberately stress-testing coverage.
+   * Treat every crawl as quota-costly—avoid running concurrent discovery calls and delete stale results instead of
+     rerunning immediately.
