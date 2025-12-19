@@ -4,7 +4,7 @@ import path from 'path';
 import { DEFAULT_SNAPSHOT_BOOKMAKERS, DEFAULT_SNAPSHOT_REGIONS } from './data/bookmakers';
 import { fetchEventsForSport, fetchMarketsForEvent, fetchSports, getOddsApiKey } from './oddsApi';
 import { MarketSnapshotOptions } from './types/snapshot';
-import { EventTeamInfo, MarketDefinition } from './types/odds';
+import { EventTeamInfo, MarketDefinition, Sport } from './types/odds';
 import {
   NameSnapshotOptions,
   PlayerNamesSnapshotResult,
@@ -31,7 +31,9 @@ function formatWarnings(warnings: string[]): string[] {
 }
 
 function formatOptions(options: NameSnapshotOptions): string {
-  return `Options -> hoursAhead=${options.hoursAhead}, maxSports=${options.maxSports}, maxEventsPerSport=${options.maxEventsPerSport}, regions=${options.regions}, bookmakers=${options.bookmakers.join(',')}, useCache=${options.useCache}`;
+  const sportsLabel = options.sports?.join(',') ?? 'all active';
+
+  return `Options -> hoursAhead=${options.hoursAhead}, maxSports=${options.maxSports}, maxEventsPerSport=${options.maxEventsPerSport}, regions=${options.regions}, bookmakers=${options.bookmakers.join(',')}, useCache=${options.useCache}, sports=${sportsLabel}`;
 }
 
 function formatSportNamesSnapshotLog(snapshot: SportNamesSnapshotResult): string {
@@ -115,9 +117,34 @@ function normalizeOptions(options: MarketSnapshotOptions = {}): NameSnapshotOpti
   const bookmakers =
     options.bookmakers?.map((bookmaker) => bookmaker.trim()).filter((bookmaker) => bookmaker.length > 0) ||
     [...DEFAULT_SNAPSHOT_BOOKMAKERS];
-  const useCache = options.useCache ?? false;
+  const useCache = options.useCache ?? true;
+  const sports = options.sports?.map((sportKey) => sportKey.trim()).filter((sportKey) => sportKey.length > 0);
 
-  return { hoursAhead, maxSports, maxEventsPerSport, regions, bookmakers, useCache };
+  return { hoursAhead, maxSports, maxEventsPerSport, regions, bookmakers, useCache, sports };
+}
+
+function selectActiveSports(
+  sports: Sport[],
+  normalizedOptions: NameSnapshotOptions,
+  warnings: string[],
+): Sport[] {
+  const requestedSports: Sport[] | undefined = normalizedOptions.sports?.length
+    ? normalizedOptions.sports
+        .map((sportKey) => {
+          const match = sports.find((sport) => sport.key === sportKey);
+
+          if (!match) {
+            warnings.push(`Requested sport ${sportKey} was not returned by Odds API /sports.`);
+          }
+
+          return match;
+        })
+        .filter((sport): sport is Sport => Boolean(sport))
+    : undefined;
+
+  const activeSports = (requestedSports ?? sports).filter((sport) => sport.active);
+
+  return activeSports.slice(0, normalizedOptions.maxSports);
 }
 
 function normalizeTeams(event: EventTeamInfo): string[] {
@@ -184,8 +211,8 @@ export async function createSportNamesSnapshot(
   const apiKey = getOddsApiKey(explicitApiKey);
   const normalizedOptions = normalizeOptions(options);
   const sports = await fetchSports(apiKey, { useCache: normalizedOptions.useCache });
-  const activeSports = sports.filter((sport) => sport.active).slice(0, normalizedOptions.maxSports);
   const warnings: string[] = [];
+  const activeSports = selectActiveSports(sports, normalizedOptions, warnings);
 
   if (activeSports.length === 0) {
     warnings.push('No active sports available from Odds API.');
@@ -219,8 +246,8 @@ export async function createTeamNamesSnapshot(
   const apiKey = getOddsApiKey(explicitApiKey);
   const normalizedOptions = normalizeOptions(options);
   const sports = await fetchSports(apiKey, { useCache: normalizedOptions.useCache });
-  const activeSports = sports.filter((sport) => sport.active).slice(0, normalizedOptions.maxSports);
   const warnings: string[] = [];
+  const activeSports = selectActiveSports(sports, normalizedOptions, warnings);
   const teamsBySport = [] as TeamNamesSnapshotResult['teamsBySport'];
   let eventsCaptured = 0;
 
@@ -279,8 +306,8 @@ export async function createPlayerNamesSnapshot(
   const apiKey = getOddsApiKey(explicitApiKey);
   const normalizedOptions = normalizeOptions(options);
   const sports = await fetchSports(apiKey, { useCache: normalizedOptions.useCache });
-  const activeSports = sports.filter((sport) => sport.active).slice(0, normalizedOptions.maxSports);
   const warnings: string[] = [];
+  const activeSports = selectActiveSports(sports, normalizedOptions, warnings);
   const playerNamesBySport = [] as PlayerNamesSnapshotResult['playerNamesBySport'];
   let eventsCaptured = 0;
   let marketsCaptured = 0;
