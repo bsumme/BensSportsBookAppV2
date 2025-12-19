@@ -55,14 +55,38 @@ export async function GET(request: Request): Promise<NextResponse> {
       );
     }
 
+    const teamsFromPayload = sampleEvent.teams?.filter((team) => typeof team === 'string' && team.trim().length > 0);
+    const teamsFromHomeAway = [sampleEvent.homeTeam, sampleEvent.awayTeam]
+      .map((team) => team?.trim())
+      .filter((team): team is string => Boolean(team && team.length > 0));
+    const normalizedTeams = (() => {
+      if (teamsFromPayload && teamsFromPayload.length > 0) {
+        return teamsFromPayload;
+      }
+
+      if (teamsFromHomeAway.length > 0) {
+        if (teamsFromHomeAway.length === 1) {
+          const placeholder = teamsFromHomeAway[0] === sampleEvent.homeTeam?.trim() ? 'Away Team' : 'Home Team';
+          return [...teamsFromHomeAway, placeholder];
+        }
+
+        return teamsFromHomeAway;
+      }
+
+      return ['Home Team', 'Away Team'];
+    })();
+
     debugContext.sampleEvent = {
       eventId: sampleEvent.eventId,
       teams: sampleEvent.teams,
+      normalizedTeams,
+      homeTeam: sampleEvent.homeTeam,
+      awayTeam: sampleEvent.awayTeam,
       startTime: sampleEvent.startTime,
     };
 
     console.info(
-      `Odds API smoke test inspecting event ${sampleEvent.eventId} (${sampleEvent.teams.join(' vs ')}) commencing ${sampleEvent.startTime}`,
+      `Odds API smoke test inspecting event ${sampleEvent.eventId} (${normalizedTeams.join(' vs ')}) commencing ${sampleEvent.startTime}`,
     );
 
     const markets = await fetchMarketsForEvent(sampleEvent.eventId, apiKey, { useCache: false });
@@ -84,7 +108,7 @@ export async function GET(request: Request): Promise<NextResponse> {
         eventsChecked: events.length,
         sampleEvent: {
           eventId: sampleEvent.eventId,
-          teams: sampleEvent.teams,
+          teams: normalizedTeams,
           startTime: sampleEvent.startTime,
           marketsRequested: selectedMarketKeys,
           totalMarketsAvailable: markets.marketKeys.length,

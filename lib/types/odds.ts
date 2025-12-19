@@ -13,13 +13,15 @@ export interface ApiEvent {
   commence_time: string;
   home_team?: string;
   away_team?: string;
-  teams: string[];
+  teams?: string[];
 }
 
 export interface EventTeamInfo {
   eventId: string;
   sportKey: string;
-  teams: string[];
+  teams?: string[];
+  homeTeam?: string;
+  awayTeam?: string;
   startTime: string;
 }
 
